@@ -1,0 +1,15 @@
+.basic-list-view {
+    font-family: 'Montserrat-SemiBold';
+    padding: 40px 35px 0 35px;
+    .heading {
+        color: #05d672;
+        display: inline-block;
+        font-weight: bold;
+        i {
+            cursor: pointer;
+        }
+    }
+    .label {
+        color: #969696
+    }
+}

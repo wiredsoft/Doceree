@@ -1,0 +1,24 @@
+<!-- <p>sidebar works!</p> -->
+<div class="sidebar-section">
+    <img class="logo" src="assets/theRxData_Partner-17.svg" alt="logo">
+    <ul class="list-unstyled menu-ul">
+        <li class="hover-li selectedNavigate" *ngFor="let menu of menus;" id="{{menu.id}}" [ngClass]="{'active': selectedItem == menu.name}"
+            (click)="onSelectMenu(menu)"><span style="min-width: 45px">
+            <img class="hoverDeactive" [ngClass]="menu.classHW" [src]="menu.icon "/>
+            <img class="hoverActive" [ngClass]="menu.classHW" [src]="menu.iconHover "/></span>{{menu.name}}</li>
+            
+    </ul>
+
+
+    <div class="pending-section">
+            <app-pending-or-know [pendingObj]="pendingObj"></app-pending-or-know>
+    </div>
+
+    <div class="col-sm-12 py-3">
+        <button class="btn-upload" (click)="uploadData()"><i class="fa fa-plus"></i> Upload data</button>
+    </div>
+    <button id="loadSideBarForProfile" (click)="loadSideBarForProfile()"></button>
+    <button id="loadSideBarForPayment" (click)="loadSideBarForPayment()"></button>
+    <button id="loadSideBarForAccount" (click)="loadSideBarForAccount()"></button>
+    <button id="loadSideBarForDataBank" (click)="loadSideBarForDataBank()"></button>
+</div>

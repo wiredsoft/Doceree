@@ -1,0 +1,78 @@
+<!-- <p>accounts-upload works!</p> -->
+<section class="account-upload-section root px-4 mb-3">
+    <app-basic-dashboard [mainHeading]="heading" [subheading]="subheading"  (changeValue)="checkdedValue($event)" [basicSelect]="basicSelect"
+    [isDropDown]="isDropDownValue"></app-basic-dashboard>
+    <mat-horizontal-stepper linear #stepper class="stepper" [selectedIndex]="selectedIndex"
+    (selectionChange)="onTabChanged($event);">
+        <mat-step>
+            <ng-template matStepLabel>Upload CSV</ng-template>
+            <div class="upload-section">
+                <div class="upload-container" appDrag (files)="filesDropped($event)">
+                    <div class="cursor-pointer">
+                        <i class="fa fa-cloud-upload upload-icon"></i>
+                        <button class="add-csv">
+                            <input type="file" class="add-csv" #fileInput (change)="onFileSelect(fileInput)">
+                            <span class="csv-text">Add csv</span>
+                        </button>
+                        <span class="basic-label"> or drop csv list here.</span>
+                    </div>
+                </div>
+                <p class="template">
+                    Need Help? <a href=".././../../../assets/Seller Accounts CSV.xlsx"
+                        download="Seller Accounts CSV.xlsx"><span class="primary-color">Download our CSV
+                            template</span></a> to make sure your CSV is formatted correctly.
+                </p>
+                <div *ngIf="file" class="uploading-box">
+                    <div class="row no-gutters">
+                        <div class="col-md-11">
+                            <div class="d-flex justify-content-between">
+                                <span class="uploading-heading">{{ uploadText }}</span>
+                                <span class="text-color">{{ progressValue }}%</span>
+                            </div>
+                            <mat-progress-bar class="progress-bar" [color]="color" mode="determinate"
+                                [value]="progressValue">
+                            </mat-progress-bar>
+                            <div><span class="basic-label">{{file.name}}</span></div>
+                        </div>
+                        <div class="progress-icons col d-flex justify-content-around align-items-center">
+                            <a [href]="fileUrl" [download]="file?.name"><i class="fa fa-eye basic-icon"></i></a>
+                            <a (click)="removeFile()"><i class="fa fa-times cancel-icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-2">
+                <button mat-button matStepperNext class="btn basic-button mb-3">Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Map Fields</ng-template>
+            <div class="map-field-table">
+                <app-editable [tableObj]="tableObj"></app-editable>
+            </div>
+            <div class="py-2">
+                <button mat-button matStepperNext class="btn basic-button mt-5">Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <div class="review-section card p-3">
+                <div class="file-container d-flex flex-column" *ngIf="file">
+                    <div class="d-flex">
+                        <span class="file-name">{{file?.name}}</span>
+                        <div class="d-flex justify-content-center">
+                            <a [href]="fileUrl" [download]="file?.name" class="ml-2"><i class="fa fa-eye basic-sm-icon"></i></a>
+                            <a class="ml-2"><i class="fa fa-times cancel-sm-icon"></i></a>
+                        </div>
+                    </div>
+                    <span class="basic-label">{{file?.size}} kb</span>
+                </div>
+                <basic-list-view title="Mapped Fields" [isEdit]=true [fields]="mappedFields" 
+                    [object]="mappedObj" (onEdit)="onEdit(stepper)"></basic-list-view>
+                <div class="float-right">
+                    <basic-button text="Submit" (click)="onSubmit()" class="p-3" style="float: right;"></basic-button>
+                </div>
+            </div>
+            <ng-template matStepLabel>Review</ng-template>
+        </mat-step>
+    </mat-horizontal-stepper>
+</section>

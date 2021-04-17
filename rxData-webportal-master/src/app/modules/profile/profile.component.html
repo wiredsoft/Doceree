@@ -1,0 +1,157 @@
+<div class="profile-section">
+    <app-basic-dashboard [mainHeading]="mainHeading" [subheading]="subheading"></app-basic-dashboard>
+    <mat-horizontal-stepper linear #stepper class="stepper" (selectionChange)="tabChange($event)"
+        [selectedIndex]="selectedIndex">
+        <mat-step [completed]="isFirstStepDone">
+            <ng-template matStepLabel class="pl-0">Create Profile</ng-template>
+            <div *ngIf="selectedIndex==0&&!isFirstStepDone" class="video-section
+                card">
+                <div class="video">
+                    <iframe id="createProfile" class="iframe-video" src="//www.youtube.com/embed/9B7te184ZpQ?rel=0"
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- <button mat-button matStepperNext id="0" style="display: none">Next</button> -->
+            <div class="d-flex flex-row-reverse my-2" *ngIf="!isFirstStepDone">
+                <basic-button class="complete-profile-btn" text="Complete
+                    Profile" (click)="onCompleteProfile(0)">
+                </basic-button>
+            </div>
+            <div *ngIf="profileObj&&isFirstStepDone">
+                <basic-list-view title="Personal Details" [object]="profileObj.personalDetail" [isEdit]=true
+                    [fields]="personalDetailList" (onEdit)="onEditEvent('Profile',0)"></basic-list-view>
+                <basic-list-view title="Business Details" [object]="profileObj.businessDetail" [isEdit]=true
+                    [fields]="businessDetailList" (onEdit)="onEditEvent('Profile',1)"></basic-list-view>
+            </div>
+        </mat-step>
+        <mat-step [completed]="isSecondStepDone">
+            <ng-template matStepLabel>Add Bank Details</ng-template>
+            <div class="video-section card" *ngIf="!isSecondStepDone">
+                <div class="video">
+                    <iframe id="createProfile" class="iframe-video" src="//www.youtube.com/embed/9B7te184ZpQ?rel=0"
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="d-flex flex-row-reverse my-2" *ngIf="!isSecondStepDone">
+                <basic-button class="complete-profile-btn" text="Complete Bank
+                    Detail" (click)="onCompleteBankDetails(1)">
+                </basic-button>
+            </div>
+            <div *ngIf="isSecondStepDone">
+                <basic-list-view [isEdit]=true title="Account Department" [object]="paymentObj?.accountDepartment"
+                    [fields]="accountDepartList" (onEdit)="onEditEvent('Payments',0)"></basic-list-view>
+                <basic-list-view [isEdit]=true title="Bank Detail" [object]="paymentObj?.bankDetail"
+                    [fields]="bankDetailList" (onEdit)="onEditEvent('Payments',1)"></basic-list-view>
+            </div>
+        </mat-step>
+        <mat-step [completed]="isThirdStepDone">
+            <ng-template matStepLabel>Add Accounts</ng-template>
+            <div class="video-section card" *ngIf="!isThirdStepDone">
+                <div class="video">
+                    <iframe id="createProfile" class="iframe-video" src="//www.youtube.com/embed/9B7te184ZpQ?rel=0"
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="d-flex flex-row-reverse my-2" *ngIf="!isThirdStepDone">
+                <basic-button class="complete-profile-btn" text="Complete
+                    Account" (click)="onCompleteAccountDetails(2)">
+                </basic-button>
+            </div>
+            <div class="card" *ngIf="isThirdStepDone">
+                <app-basic-form [formfield]="accountsDetail"></app-basic-form>
+                <!-- <basic-list-view title="Personal Details" [object]="profileObj.personalDetail" [isEdit]=true
+                    [fields]="personalDetailListAccount" (onEdit)="onEditEvent('Account',0)"></basic-list-view>
+                <basic-list-view title="Business Details" [object]="profileObj.businessDetail" [isEdit]=true
+                    [fields]="businessDetailListAccount" (onEdit)="onEditEvent('Account',1)"></basic-list-view> -->
+            </div>
+        </mat-step>
+        <mat-step [completed]="isFourStepDone">
+            <ng-template matStepLabel>Upload Data</ng-template>
+            <div class="video-section card" *ngIf="!isFourStepDone">
+                <div class="video">
+                    <iframe id="createProfile" class="iframe-video" src="//www.youtube.com/embed/9B7te184ZpQ?rel=0"
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="d-flex flex-row-reverse my-2" *ngIf="!isFourStepDone">
+                <basic-button class="complete-profile-btn" text="Upload Data" (click)="onCompleteUploadDetails(3)">
+                </basic-button>
+            </div>
+            <div style="width: 95%" *ngIf="isFourStepDone">
+                <div class="review-section card p-3">
+                    <div class="file-container d-flex flex-column" *ngIf="file">
+                        <div class="d-flex">
+                            <span class="file-name">{{file?.name}}</span>
+                            <div class="d-flex justify-content-center">
+                                <a [href]="fileUrl" [download]="file?.name" class="ml-2"><i
+                                        class="fa fa-eye basic-sm-icon"></i></a>
+                                <a class="ml-2"><i class="fa fa-times cancel-sm-icon"></i></a>
+                            </div>
+                        </div>
+                        <span class="basic-label">{{file?.size}} kb</span>
+                    </div>
+                    <basic-list-view title="Mapped Fields" [isEdit]=true [fields]="mappedFields" [object]="mappedObj"
+                        (onEdit)="onEditEvent('Upload',2)"></basic-list-view>
+                    <div class="row sub-category" style="margin-left: 15px;">
+                        <div class="col-md-4 ">
+                            <div class="basic-list-view">
+                                <div class="row">
+                                    <div class="col-md-12 heading d-flex flex-justify-content-center mb-4">
+                                        <span>Set Price</span>
+                                        <a class="heading px-2" (click)="onEditEvent('Upload',3)"><i
+                                                class="fa fa-edit"></i></a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 py-2 mb-3">
+                                        <div><span class="label">Bid Price</span></div>
+                                        <!-- <span>${{ bidPrice.value }}</span> -->
+                                        <span>$555</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="basic-list-view pl-10">
+                                <div class="row">
+                                    <div class="col-md-12 heading d-flex flex-justify-content-center mb-4">
+                                        <span>Payments</span>
+                                        <a class="heading px-2" (click)="onEditEvent('Upload',4)"><i
+                                                class="fa fa-edit"></i></a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 py-2 mb-3">
+                                        <div><span class="label">Bank</span></div>
+                                        <!-- <span>{{ bank.value }}</span> -->
+                                        <span>standard chartered Bank</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+        <!-- <mat-step [completed]="isFifthStepDone">
+            <ng-template matStepLabel>Ready to Earn</ng-template>
+            <div class="video-section card">
+                <div class="video">
+                    <iframe id="createProfile" class="iframe-video"
+                        src="//www.youtube.com/embed/9B7te184ZpQ?rel=0"
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="d-flex flex-row-reverse my-2" *ngIf="!isFifthStepDone">
+                <basic-button class="complete-profile-btn" text="Complete
+                    Account" (click)="onCompleteReadyToEarn(4)">
+                </basic-button>
+            </div>
+        </mat-step> -->
+    </mat-horizontal-stepper>
+    <!-- <div class="d-flex flex-row-reverse my-2">
+        <basic-button class="complete-profile-btn" text="Complete Profile" (click)="onCompleteProfile()">
+        </basic-button>
+    </div> -->
+</div>

@@ -1,0 +1,15 @@
+<div class="basic-list-view">
+    <div class="row">
+        <div class="col-md-12 heading d-flex flex-justify-content-center mb-4">
+            <span>{{ title }}</span>
+            <a *ngIf="isEdit" class="heading px-2" (click)="edit()"><i class="fa fa-edit"></i></a>
+            <ng-content class="d-flex flex-justify-content-center"></ng-content>
+        </div>
+    </div>
+    <div class="row">
+        <div *ngFor="let field of fields" [ngClass]="field.class" class="py-2 mb-3">
+            <div><span class="label">{{ field.label }}</span></div>
+            <span [ngStyle]="{'font-family':field.fontFamily, 'font-weight':field.fontWeight}" *ngIf="object != null">{{ object[field.id] }}</span>
+        </div>
+    </div>
+</div>

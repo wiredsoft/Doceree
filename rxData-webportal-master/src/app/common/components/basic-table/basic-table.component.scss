@@ -1,0 +1,205 @@
+.table-section-inner {
+  // border: 0.5px solid #d0d2d3;
+  // background: #fff;
+  // margin: 5px 0;
+  // border-radius: 7px;
+  .table-heading {
+    border-bottom: solid 0.5px #d0d2d3;
+    font-family: "Montserrat-SemiBold";
+    font-size: 16px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    // line-height: 2.56;
+    letter-spacing: normal;
+    text-align: left;
+    color: #58595b;
+  }
+}
+.th1{
+  padding: 10px 15px !important;
+}
+th,
+td {
+  padding: 6px 15px;
+  span {
+    i {
+      margin-right: 5px;
+    }
+    &.payment-status {
+      color: #fff;
+      padding: 2px 10px;
+      font-size: 13px;
+      border-radius: 15px;
+      width: 110px;
+      display: block;
+      text-align: center;
+      // margin: auto;
+    }
+  }
+}
+.data-font {
+  font-family: "Montserrat-SemiBold";
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #969696;
+}
+.th-font {
+  // font-weight: 500;
+  // color:#58595B;
+
+  font-family: "Montserrat-SemiBold";
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #58595b;
+}
+
+// table thead tr th:first-child {
+//   border-radius: 7px;
+//   // text-align: left !important;
+// }
+// table tbody tr td:last-child {
+//   // border-radius: 7px;
+//   text-align: center;
+// }
+.link-img {
+  margin-right: 6px;
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+}
+.link {
+  font-family: "Montserrat-Medium";
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 3.36;
+  letter-spacing: normal;
+  text-align: center;
+  color: #969696;
+  cursor: pointer;
+}
+.btn-img {
+  border: none;
+  padding: 0px;
+  background: none;
+}
+// .border-col {
+//   border: 0.5px solid #d0d2d3;
+//   border-radius: 10px;
+// }
+::ng-deep {
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #cccccc26;
+  }
+  #radialBarChart {
+    .apexchartshppvlble {
+      width: 102px !important;
+    }
+    .apexcharts-canvas {
+      width: 102px !important;
+    }
+    .apexcharts-datalabels-group {
+      display: none;
+    }
+  }
+  .ngx-pagination a,
+  .ngx-pagination button {
+    background: white !important;
+    border-radius: 5px !important;
+    margin: 12px 3px !important;
+    font-size: 15px !important;
+  }
+
+  .ngx-pagination .pagination-previous a::before,
+  .ngx-pagination .pagination-previous.disabled::before {
+    content: unset !important;
+  }
+  .ngx-pagination .pagination-next a::after,
+  .ngx-pagination .pagination-next.disabled::after {
+    content: unset !important;
+  }
+  .ngx-pagination .current {
+    border-radius: 5px !important;
+    font-family: "Montserrat-SemiBold" !important;
+  }
+  .ngx-pagination a,
+  .ngx-pagination button {
+    font-family: "Montserrat-SemiBold" !important;
+    font-weight: 600 !important;
+    color: #969696 !important;
+  }
+  .ngx-pagination .disabled {
+    background: #ece9e9 !important;
+    border-radius: 5px !important;
+    cursor: no-drop !important;
+    font-family: "Montserrat-SemiBold" !important;
+  }
+  #btnImgDropdown {
+    .dropdown-toggle::after {
+      display: none !important;
+    }
+  }
+}
+
+.dropdown-menu-icon {
+  color: #05d672 !important;
+}
+.apx-chart-table-count {
+  position: absolute;
+  top: 50%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: "Montserrat-Bold";
+  color: #969696;
+  .percentage {
+    font-size: 7px;
+    font-style: normal;
+    margin: 0 0 0 2px;
+  }
+}
+.pagination-view {
+  text-align: right;
+}
+.pagination-label {
+  padding-top: 15px;
+  font-family: "Montserrat-SemiBold";
+  color: #969696;
+  font-size: 15px;
+}
+
+ul.dropdown-menu {
+  li {
+    padding: 5px 10px;
+    margin: 0;
+    cursor: pointer;
+    color: #969696;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    &:hover {
+      background: #05d67214;
+      transition: all 0.3s ease;
+    }
+    i {
+      font-size: 16px;
+      color: #969696;
+      margin-right: 5px;
+      padding: 0 10px;
+      border: none;
+    }
+  }
+}

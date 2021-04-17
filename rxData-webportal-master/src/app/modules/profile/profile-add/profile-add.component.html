@@ -1,0 +1,27 @@
+<div class="profile-add-section py-3 px-4">
+    <app-basic-dashboard [mainHeading]="mainHeading" [subheading]="subheading"></app-basic-dashboard>
+    <div class="card payment-card" *ngIf="!showThanksPage">
+        <mat-tab-group mat-align-tabs="start" [selectedIndex]="selectedIndex"
+            (selectedTabChange)="onTabChanged($event);">
+            <mat-tab label="Personal Details" >
+               <div style="width: 88%; margin: auto;">
+                <app-basic-form [formfield]="personaldetails" [buttons]="personalDetailButton"
+                    (btnClickEvent)="onSubmitPersonalDetail($event)"></app-basic-form>
+                </div>
+            </mat-tab>
+            <mat-tab label="Business Details" >
+                <div style="width: 88%; margin: auto;">
+                <app-basic-form [formfield]="businessDetails" [buttons]="businessDetailButton"
+                    (btnClickEvent)="onSubmitBusinessDetail($event)"></app-basic-form>
+                    </div>
+            </mat-tab>
+            <mat-tab label="Review and Submit">
+                <basic-list-view title="Personal Details" [object]="profileObj.personalDetail" [isEdit]=true
+                    [fields]="personalDetailList" (onEdit)="selectedIndex = 0"></basic-list-view>
+                <basic-list-view title="Business Details" [object]="profileObj.businessDetail" [isEdit]=true
+                    [fields]="businessDetailList" (onEdit)="selectedIndex = 1"></basic-list-view>
+                <basic-button text="Submit" (click)="onSubmit()" class="p-3 d-flex flex-row-reverse"></basic-button>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

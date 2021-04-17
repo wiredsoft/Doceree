@@ -1,0 +1,33 @@
+<div class="payment-inner-section">
+    <div class="payment">
+        <span class="icon-section mat-elevation-z4"><img src="assets/img/BulbGreen.svg"/>
+            <!-- <i class="fa fa-lightbulb-o"></i> -->
+        </span>
+        <div class="payment-content">
+
+
+            <span class="didyouknow">{{pendingObj.heading}}</span>
+            <div *ngIf="pendingObj.type=='Dashboard' || pendingObj.type=='Analytics'" class="dashboard-inner-row">
+                <div *ngFor="let pending of pendingList">
+                    <div class="d-flex align-items-center my-2 py-2 list-border">
+                        <span class="pending-count">{{pending.count}}</span>
+                        <span class="pending-title">{{pending.title}}</span>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="pendingObj.type!=='Dashboard' && pendingObj.type!=='Profile' && pendingObj.type!='Analytics'">
+                <p class="pending-title2"> 
+                    {{pendingObj.details}}
+                   
+                </p>
+            </div>
+            <div *ngIf="pendingObj.type =='Profile'">
+                    <p class="pending-title2"> 
+                            You can add additional users in your 
+                       <span class="accounts-settings">account’s settings.</span>
+                    </p>
+                </div>
+        </div>
+
+    </div>
+</div>

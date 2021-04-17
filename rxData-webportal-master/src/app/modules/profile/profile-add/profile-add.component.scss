@@ -1,0 +1,22 @@
+@import "../../../styles/variable.scss";
+.profile-add-section {
+  background: #f5f5fa;
+}
+::ng-deep {
+  .mat-tab-body-content {
+    height: 100%;
+    overflow-x: hidden !important;
+  }
+  .mat-tab-label-active {
+    color: $secondary !important;
+  }
+  .mat-tab-label {
+    font-family: "Montserrat-SemiBold";
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .mat-tab-label {
+    height: unset !important;
+    padding: 30px 35px !important;
+  }
+}

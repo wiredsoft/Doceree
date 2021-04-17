@@ -1,0 +1,17 @@
+<section class="basic-component-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-9 col-lg-9 p-0" style="padding-top: 30px !important;">
+                <p class="main-heading d-flex align-items-center">
+                    {{mainHeading}}
+                    <ng-content></ng-content>
+                    <app-basic-select class="dash-basic-select" *ngIf="isDropDown" [basicSelect]="basicSelect" (checkdedValue)="checkdedValue($event)"></app-basic-select>
+                </p>
+                
+                <p class="sub-heading">
+                    {{subheading}}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,217 @@
+<!-- <p>upload-api works!</p> -->
+<section class="upload-api root px-4">
+    <app-basic-dashboard [mainHeading]="heading" [subheading]="subheading"  (changeValue)="checkdedValue($event)" [basicSelect]="basicSelect"
+    [isDropDown]="isDropDownValue"></app-basic-dashboard>
+    <mat-horizontal-stepper linear #stepper class="stepper" [selectedIndex]="selectedIndex" (selectionChange)="onTabChanged($event);">
+        <mat-step>
+            <ng-template matStepLabel>Basic detail</ng-template>
+            <div style="width: 95%">
+                <div class="data-detail-form card px-5 pt-4 pb-5" [formGroup]="form">
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label attr.for="nameData" class="label-basic">Name Data Set</label>
+                            <input formControlName="nameData" id="nameData" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label attr.for="pharmacy" class="label-basic">Select Accounts</label>
+                            <select id="accounts" formControlName="accounts" class="form-control">
+                                <option *ngFor="let opt of accountsOptions" [value]="opt.value">{{opt.label}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 form-group add-pharmacy px-4" *ngIf="profileObj?.personalDetail?.typeOfAccount !== 'EHR'">
+                            <i class="fa fa-plus add-icon"></i>
+                            <span class="add-label" (click)="openDialogAccountView()">Add new pharmacy</span>
+                        </div>
+                        <div class="col-md-4 form-group add-pharmacy px-4" *ngIf="profileObj?.personalDetail?.typeOfAccount === 'EHR'">
+                            <i class="fa fa-plus add-icon"></i>
+                            <span class="add-label" (click)="openDialogAccountView()">Add new EHR</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-4">
+                    <button mat-button matStepperNext class="btn basic-button">Next</button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>API Key</ng-template>
+            <div style="width: 95%">
+                <div class="col-md-11 p-0">
+                    <div class="data-detail-form card px-5 py-4" [formGroup]="form">
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label attr.for="nameData" class="label-basic">Test Api Key</label>
+                                <div class="d-flex align-items-center col-md-10 p-0">
+                                    <input formControlName="textApiKey" id="textApiKey" type="text"
+                                        class="form-control">
+                                    <button class="fa fa-copy btn-copy" (click)="copyTestApiKey()">
+                                        <span>copy</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label attr.for="pharmacy" class="label-basic">Live Api Key</label>
+                                <div class="d-flex align-items-center col-md-10 p-0">
+                                    <input formControlName="liveApiKey" id="liveApiKey" type="text"
+                                        class="form-control">
+                                    <button class="fa fa-copy btn-copy" (click)="copyLiveApiKey()">
+                                        <span>copy</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="py-4">
+                        <button mat-button matStepperNext class="btn basic-button">Next</button>
+                    </div>
+                </div>
+            </div>
+
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Upload data</ng-template>
+            <div style="width: 95%">
+                <div class="col-md-11 p-0">
+                    <div class="data-detail-form card px-5 py-4" [formGroup]="form">
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label attr.for="nameData" class="label-basic">You need to call the following end point
+                                    -
+                                </label>
+                                <div class="d-flex align-items-flex-end">
+                                    <textarea rows="5" formControlName="textApiKey" id="textApiKey" type="text"
+                                        class="form-control">
+                                </textarea>
+                                    <button class="fa fa-copy btn-copy" (click)="copyTestApiKey()"><span>
+                                            copy</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label attr.for="pharmacy" class="label-basic">With the following details</label>
+                                <div class="d-flex align-items-flex-end">
+                                    <textarea rows="5" formControlName="liveApiKey" id="liveApiKey" type="text"
+                                        class="form-control">
+                                </textarea>
+                                    <button class="fa fa-copy btn-copy" (click)="copyLiveApiKey()"> <span>
+                                            copy</span></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="para-upload">
+                        <p>1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt ut laoreet dolore </p>
+
+                        <p>2. minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex
+                            ea commodo consequat. Duis autem vel eum iriure do</p>
+
+                        <p>3. tate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero
+                            eros et accumsan et iusto odio dignissim qui blandit prae</p>
+                    </div>
+                    <div class="py-4">
+                        <button mat-button matStepperNext class="btn basic-button">Next</button>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Set Price</ng-template>
+            <div style="width: 95%">
+                <div class="set-price-section">
+                    <div class="row py-2">
+                        <app-basic-count-grid [grid]="grid" class="col-md-4" [multipleData]="true">
+                        </app-basic-count-grid>
+                        <app-meter-card [cardDetail]="cardDetail" class="col-md-4 pl-0"></app-meter-card>
+                        <app-meter-card [cardDetail]="priceCardDetail" class="col-md-4 pl-0"></app-meter-card>
+                    </div>
+                    <div class="card pb-5 px-5 pt-4">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label attr.for="suggestedPrice" class="label-basic">Suggested Price</label>
+                                <div class="input-container">
+                                    <input #bidPrice id="suggestedPrice" type="number" class="form-control" style="color: #05d672!important;" value="61386">
+                                    <button class="btn edit-icon"><i class="fa fa-edit fa-lg"
+                                            (click)="disable = !disable"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-2">
+                    <button mat-button matStepperNext class="btn basic-button my-3">Next</button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Payments</ng-template>
+            <div style="width: 85%">
+                <div class="data-detail-form card  px-5 pt-4 pb-5" [formGroup]="form">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label attr.for="pharmacy" class="label-basic">Select Bank</label>
+                            <select id="accounts" formControlName="accounts" class="form-control">
+                                <option *ngFor="let opt of accountsOptions" [value]="opt.value">{{opt.label}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 add-pharmacy px-4">
+                            <i class="fa fa-plus add-icon"></i>
+                            <span class="add-label" (click)="openDialogPaymentView()">Add new bank</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="note-payment">
+                    <p class="label-p">Note</p>
+                    <p>1. Payments will reflect within 2 months of Data subscription </p>
+                    <p>2. Payments will reflect on a monthly basis.</p>
+                </div>
+                <div class="py-4">
+                    <button mat-button matStepperNext class="btn basic-button">Next</button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Review</ng-template>
+            <div style="width: 95%">
+                <div class="review-section card p-3">
+                    <div class="file-container d-flex flex-column" *ngIf="file">
+                        <div class="d-flex">
+                            <span class="file-name">{{file?.name}}</span>
+                            <div class="d-flex justify-content-center">
+                                <a [href]="fileUrl" [download]="file?.name" class="ml-2"><i
+                                        class="fa fa-eye basic-sm-icon"></i></a>
+                                <a class="ml-2"><i class="fa fa-times cancel-sm-icon"></i></a>
+                            </div>
+                        </div>
+                        <span class="basic-label">{{file?.size}} kb</span>
+                    </div>
+                    <basic-list-view title="Basic details" [isEdit]=true [fields]="basicDetails" [object]="mappedObj"
+                        (onEdit)="onEdit(stepper)"></basic-list-view>
+                    <basic-list-view title="API Key" [isEdit]=true [fields]="aPIKeyDetails" [object]="mappedObj"
+                        (onEdit)="onEdit(stepper)"></basic-list-view>
+                    <basic-list-view title="Uplaod Data" [isEdit]=true [fields]="uplaodDataDetails" [object]="mappedObj"
+                        (onEdit)="onEdit(stepper)"></basic-list-view>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <basic-list-view title="Set Price" [isEdit]=true [fields]="setPriceDetails"
+                                [object]="mappedObj" (onEdit)="onEdit(stepper)"></basic-list-view>
+
+                        </div>
+                        <div class="col-md-6">
+                            <basic-list-view title="Payments" [isEdit]=true [fields]="paymentsDetails"
+                                [object]="mappedObj" (onEdit)="onEdit(stepper)"></basic-list-view>
+                        </div>
+                    </div>
+                    <div class="float-right">
+                        <basic-button text="Submit" (click)="onSubmit()" class="p-3" style="float: right;">
+                        </basic-button>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</section>

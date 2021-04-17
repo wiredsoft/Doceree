@@ -1,0 +1,209 @@
+@import "../../styles/global.scss";
+.analytics {
+  background-color: #f5f5fa;
+  padding: 0 30px;
+}
+
+.confidence {
+  margin-top: 53px;
+  background: white;
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  .performers-star {
+    color: #f8d33e;
+    margin-bottom: 5px;
+    display: block;
+  }
+  .performers-heading {
+    font-family: "Montserrat-SemiBold";
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.26;
+    letter-spacing: normal;
+    text-align: left;
+    color: #969696;
+  }
+  .list-heading {
+    margin: 0;
+    font-family: "Montserrat-SemiBold";
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.26;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffe67b;
+  }
+  .list-count {
+    font-family: "Montserrat-Medium";
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.26;
+    letter-spacing: normal;
+    text-align: center;
+    color: #969696;
+  }
+  .list-percentage {
+    // font-weight: 600;
+    // color: #969696;
+    // font-size: 10px;
+    // float: right;
+    // margin-right: 12px;
+    font-family: Montserrat-Medium;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.26;
+    letter-spacing: normal;
+    text-align: center;
+    color: #969696;
+    float: right;
+  }
+  .list-percentage-down {
+    font-weight: 600;
+    color: #969696;
+    font-size: 10px;
+    float: right;
+    margin-right: 12px;
+  }
+  .list-btn {
+    width: 40%;
+    color: #006bff;
+    font-weight: 600;
+    border-radius: 12px;
+    background: #cce1ff;
+    font-size: 10px;
+    border: none;
+    padding: 4px 5px;
+  }
+}
+.red {
+  margin-left: 2px;
+  color: #ff0e2c;
+}
+.green {
+  color: #92f7c5;
+  margin-left: 2px;
+}
+.countsection {
+  width: 60%;
+  text-align: left;
+}
+.performers-list {
+  margin: 14px 0 0;
+}
+.download-btn {
+  border: none;
+  padding: 6px 14px;
+  border-radius: 2px;
+  color: #006bff;
+  background-color: #006bff21;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  i {
+    margin-right: 5px;
+  }
+}
+.last-month {
+  border-radius: 15px;
+  color: #969696;
+  position: absolute;
+  right: 29px;
+  z-index: 999;
+  top: 8px;
+  padding: inherit;
+  width: 132px;
+  height: 28px;
+}
+.analytics-basic-select {
+  display: block;
+  width: 155px;
+  font-size: 11px;
+  margin-right: 60px;
+  .filter-fields {
+    border-radius: 8px !important;
+  }
+}
+.increase-link {
+  color: #05d672;
+  font-size: small;
+  text-decoration: underline;
+  font-weight: 500;
+  font-family: "Montserrat-Medium";
+  margin-top: 18px;
+}
+::ng-deep {
+  app-basic-select .filter-fields {
+    margin-left: 0 !important;
+  }
+  app-basic-table .table-section-inner {
+    margin: 0 !important;
+  }
+  .analytics-table-section {
+    app-basic-table {
+      th {
+        padding: 20px 35px !important;
+      }
+      td {
+        padding: 0px 35px !important;
+      }
+      label {
+        padding-left: 20px;
+      }
+    }
+  }
+  #chart {
+    .apexcharts-datalabel-label {
+      font-family: "Montserrat-SemiBold" !important;
+      font-size: 10px;
+      font-weight: 600;
+    }
+    .apexcharts-datalabel-value {
+      font-family: "Montserrat-SemiBold" !important;
+      font-size: 20px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.47;
+      letter-spacing: normal;
+      text-align: left;
+      fill: $secondary !important;
+    }
+    .apexcharts-tooltip-title {
+      display: none;
+    }
+    .apexcharts-tooltip-marker {
+      display: none !important;
+    }
+    .apexcharts-tooltip-series-group {
+      background-color: #414042;
+      font-family: "Montserrat-SemiBold";
+      font-size: 18.3px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.26;
+      letter-spacing: normal;
+      text-align: left;
+      color: #ffffff;
+    }
+  }
+}
+.grid-row {
+  .grid-column {
+    padding-right: 0;
+    &:last-child {
+      padding-right: 15px;
+    }
+  }
+}

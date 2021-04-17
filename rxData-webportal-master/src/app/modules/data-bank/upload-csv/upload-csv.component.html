@@ -1,0 +1,261 @@
+<section class="upload-csv root px-4">
+    <app-basic-dashboard [mainHeading]="heading" [subheading]="subheading"
+        (changeValue)="checkdedValue($event)" [basicSelect]="basicSelect"
+        [isDropDown]="isDropDownValue"></app-basic-dashboard>
+    <mat-horizontal-stepper linear #stepper class="stepper"
+        [selectedIndex]="selectedIndex"
+        (selectionChange)="onTabChanged($event);">
+        <mat-step>
+            <ng-template matStepLabel>Data Details</ng-template>
+            <div style="width: 95%">
+                <div class="data-detail-form card px-5 pt-4 pb-5"
+                    [formGroup]="form">
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label attr.for="nameData" class="label-basic">Name
+                                Data Set</label>
+                            <input formControlName="nameData" id="nameData"
+                                type="text" class="form-control">
+                        </div>
+                        <div class="col-md-4 form-group"
+                            *ngIf="profileObj?.personalDetail?.typeOfAccount!=='EHR'">
+                            <label attr.for="pharmacy" class="label-basic">Select
+                                Pharmacy</label>
+                            <select id="pharmacy" formControlName="pharmacy"
+                                class="form-control">
+                                <option *ngFor="let opt of pharmacyOptions"
+                                    [value]="opt.value">{{opt.label}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 form-group"
+                            *ngIf="profileObj?.personalDetail?.typeOfAccount==='EHR'">
+                            <label attr.for="ehr" class="label-basic">Select EHR</label>
+                            <select id="ehr" formControlName="ehr"
+                                class="form-control">
+                                <option *ngFor="let opt of pharmacyOptions"
+                                    [value]="opt.value">{{opt.label}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 form-group add-pharmacy px-4">
+                            <i class="fa fa-plus add-icon"></i>
+                            <span class="add-label"
+                                (click)="openDialogAccountView()">Add new
+                                pharmacy</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-4">
+                    <button mat-button matStepperNext class="btn basic-button">Next</button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Upload</ng-template>
+            <div style="width: 85%">
+                <div class="upload-section">
+                    <div class="upload-container" appDrag
+                        (files)="filesDropped($event)">
+                        <div class="cursor-pointer">
+                            <i class="fa fa-cloud-upload upload-icon"></i>
+                            <button class="add-csv">
+                                <input type="file" class="add-csv" #fileInput
+                                    (change)="onFileSelect(fileInput)">
+                                <span class="csv-text">Add csv</span>
+                            </button>
+                            <span class="basic-label"> or drop csv list here.</span>
+                        </div>
+                    </div>
+                    <p class="template">
+                        Need Help? <a href=".././../../../assets/Seller Accounts
+                            CSV.xlsx"
+                            download="Seller Accounts CSV.xlsx"><span
+                                class="primary-color">Download our CSV
+                                template</span></a> to make sure your CSV is
+                        formatted correctly.
+                    </p>
+                    <div *ngIf="file" class="uploading-box">
+                        <div class="row no-gutters">
+                            <div class="col-md-11">
+                                <div class="d-flex justify-content-between">
+                                    <span class="uploading-heading">{{
+                                        uploadText }}</span>
+                                    <span class="text-color">{{ progressValue
+                                        }}%</span>
+                                </div>
+                                <mat-progress-bar class="progress-bar"
+                                    [color]="color" mode="determinate"
+                                    [value]="progressValue">
+                                </mat-progress-bar>
+                                <div><span class="basic-label">{{file.name}}</span></div>
+                            </div>
+                            <div class="progress-icons col d-flex
+                                justify-content-around align-items-center">
+                                <a [href]="fileUrl" [download]="file?.name"><i
+                                        class="fa fa-eye basic-icon"></i></a>
+                                <a (click)="removeFile()"><i class="fa fa-times
+                                        cancel-icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-2">
+                    <button mat-button matStepperNext class="btn basic-button
+                        mb-3" [disabled]="!isNext"
+                        [class.disable-button]="!isNext">Next</button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Mapping</ng-template>
+            <div class="map-field-table">
+                <app-editable [tableObj]="tableObj"></app-editable>
+            </div>
+            <div class="py-2">
+                <button mat-button matStepperNext class="btn basic-button my-3"
+                    style="margin-right: 65px;">Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+
+            <ng-template matStepLabel>Set Price</ng-template>
+            <div style="width: 95%">
+                <div class="set-price-section">
+                    <div class="row py-2">
+                        <app-basic-count-grid [grid]="grid" class="col-md-4"
+                            [multipleData]="true">
+                        </app-basic-count-grid>
+                        <app-meter-card [cardDetail]="cardDetail"
+                            class="col-md-4 pl-0"></app-meter-card>
+                        <app-meter-card [cardDetail]="priceCardDetail"
+                            class="col-md-4 pl-0"></app-meter-card>
+                    </div>
+                    <div class="card pb-5 px-5 pt-4" style="margin-top: 6px;">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label attr.for="suggestedPrice"
+                                    class="label-basic">Suggested Price</label>
+                                <div class="input-container">
+                                    <input #bidPrice id="suggestedPrice"
+                                        type="number" style="color:
+                                        #05d672!important;" class="form-control"
+                                        value="61386">
+                                    <button class="btn edit-icon"><i class="fa
+                                            fa-edit fa-lg"
+                                            (click)="disable= !disable"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-2">
+                    <button mat-button matStepperNext class="btn basic-button
+                        my-3">Next</button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Payments</ng-template>
+            <div style="width: 85%">
+                <div class="data-detail-form card px-5 pt-4 pb-5">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label attr.for="pharmacy" class="label-basic">Select
+                                Bank</label>
+                            <select id="pharmacy" class="form-control" #bank>
+                                <option *ngFor="let opt of pharmacyOptions"
+                                    [value]="opt.value">{{opt.label}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 add-pharmacy px-4">
+                            <i class="fa fa-plus add-icon"></i>
+                            <span class="add-label"
+                                (click)="openDialogPaymentView()">Add new bank</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-2">
+                    <button mat-button matStepperNext class="btn basic-button
+                        my-3">Next</button>
+                    <div class="note-block">
+                        <div class="note-header p-2">{{note.title}}</div>
+                        <div class="note-point p-2" *ngFor='let point of
+                            note.points; index as i'>
+                            {{i+1}}. {{point}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Review</ng-template>
+            <div style="width: 95%">
+                <div class="review-section card p-3">
+                    <div class="file-container d-flex flex-column" *ngIf="file">
+                        <div class="d-flex">
+                            <span class="file-name">{{file?.name}}</span>
+                            <div class="d-flex justify-content-center">
+                                <a [href]="fileUrl" [download]="file?.name"
+                                    class="ml-2"><i
+                                        class="fa fa-eye basic-sm-icon"></i></a>
+                                <a class="ml-2"><i class="fa fa-times
+                                        cancel-sm-icon"></i></a>
+                            </div>
+                        </div>
+                        <span class="basic-label">{{file?.size}} kb</span>
+                    </div>
+                    <basic-list-view title="Mapped Fields" [isEdit]=true
+                        [fields]="mappedFields" [object]="mappedObj"
+                        (onEdit)="onEdit(stepper)"></basic-list-view>
+                    <div class="row sub-category">
+                        <div class="col-md-4">
+                            <div class="basic-list-view">
+                                <div class="row">
+                                    <div class="col-md-12 heading d-flex
+                                        flex-justify-content-center mb-4">
+                                        <span>Set Price</span>
+                                        <a class="heading px-2"
+                                            (click)="onEdit(stepper)"><i
+                                                class="fa fa-edit"></i></a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 py-2 mb-3">
+                                        <div><span class="label">Bid Price</span></div>
+                                        <!-- <span>${{ bidPrice.value }}</span> -->
+                                        <span>$555</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="basic-list-view pl-10">
+                                <div class="row">
+                                    <div class="col-md-12 heading d-flex
+                                        flex-justify-content-center mb-4">
+                                        <span>Payments</span>
+                                        <a class="heading px-2"
+                                            (click)="onEdit(stepper)"><i
+                                                class="fa fa-edit"></i></a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 py-2 mb-3">
+                                        <div><span class="label">Bank</span></div>
+                                        <!-- <span>{{ bank.value }}</span> -->
+                                        <span>standard chartered Bank</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float-right">
+                        <basic-button text="Submit" (click)="onSubmit()"
+                            class="p-3" style="float: right;">
+                        </basic-button>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</section>

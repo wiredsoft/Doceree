@@ -1,0 +1,35 @@
+<section class="radar-chart card p-2">
+    <div class="heading" [ngClass]="radarObj.headingColor">
+        <span>{{radarObj.heading}}</span>
+        <span  *ngIf="radarObj.percentageCount!=undefined" class="list-percentage"> <i 
+            class="green fa fa-caret-up"></i>{{radarObj.percentageCount}}%</span>
+    </div>
+    <div *ngIf="radarObj.type=='radar'" id="chart">
+        <apx-chart [series]="series" [chart]="chart" [xaxis]="xaxis" [fill]="fill" [stroke]="stroke" [markers]="markers"
+            [yaxis]="yaxis"></apx-chart>
+    </div>
+    <div *ngIf="radarObj.type=='radar'" class="increase-link">
+        <a>Increase your Confidence score</a>
+    </div>
+
+    <div *ngIf="radarObj.type=='map'" class="py-3" style="display: block;min-height: 142px;" [ngStyle]="{height:radarObj.minHeight}">
+        <img class="count-of-account-img w-100" src="assets/img/map.png" />
+    </div>
+    <div *ngIf="radarObj.type=='countOfAccount'" class="py-3 count-of-account">
+        <span *ngIf="radarObj.accountCount !== undefined" class="radar-account-count">
+            {{radarObj.accountCount}}
+        </span>
+        <div class="w-50" *ngIf="radarObj.accountCount === undefined">
+            <ng-content></ng-content>
+        </div>
+        <div class="pl-2 w-50">
+            <img class="count-of-account-img w-100" src="assets/img/areaGraph.svg" />
+            <div *ngIf="radarObj.btnIncreaseNow">
+                <button class="increase-now mt-4">Increase Now</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="radarObj.isFooter" class="radar-footer" [ngStyle]="{color:radarObj.footerColor}">
+        <span>{{radarObj.footer}}</span>
+    </div>
+</section>

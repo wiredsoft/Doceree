@@ -1,0 +1,38 @@
+<section class="meter-progress">
+    <div class="card meter-progress-card " style="min-height: 159px;">
+        <!-- <div class="row">
+            <div class="col-sm-9 pr-1">
+                <span class="heading">{{data.dataHeading}}</span>
+            </div>
+            <div class="col-sm-3 pl-1" [ngClass]="color">
+                <i class="text-right" [ngClass]="icon"><span class="p-1">{{data.updateCount}}</span></i>
+            </div>
+        </div> -->
+        <div class="row count-header d-flex justify-content-between">
+                <div class="data-heading">{{data.dataHeading}}</div>
+                <div class="update-sign d-flex"  [ngClass]="color">
+                    <i [ngClass]="icon"><span class="pl-1 update-count">{{data.updateCount}}</span></i>
+                </div>
+            </div>
+        <!-- <div class="row mx-auto" >
+                <rg-gauge-chart 
+                [canvasWidth]="canvasWidth"
+                [needleValue]="needleValue"
+                [centralLabel]="centralLabel"
+                [options]="options"
+                [name]="name"
+                [bottomLabel]="bottomLabel"
+                ></rg-gauge-chart>
+        </div> -->
+        <div id="chart" class="row mx-auto" style="height: 130px;">
+            <apx-chart
+              [series]="chartOptions.series"
+              [chart]="chartOptions.chart"
+              [plotOptions]="chartOptions.plotOptions"
+              [fill]="chartOptions.fill"
+              [stroke]="chartOptions.stroke"
+            ></apx-chart>
+          </div>
+        <!-- <span class="custom-count">50<i>%</i></span> -->
+    </div>
+</section>

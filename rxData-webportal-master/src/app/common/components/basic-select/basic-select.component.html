@@ -1,0 +1,15 @@
+<div class="filter-fields sort position-relative" [ngStyle]="{background:basicSelect.backgroundColor, 'border-radius':basicSelect.borderRadius }">
+    <i *ngIf="basicSelect.headerIcon!=undefined" class="ml-3" [ngClass]="basicSelect.headerIcon" style="margin-left: 15px;"></i>
+    <ul class="list-unstyled main-ul m-0 pl-2 w-100">
+        <li class="mt-0">
+            <button class="dropdown-toggle border-0 text-left" [ngStyle]="{color:basicSelect.pHColor}" data-toggle="dropdown">{{basicSelect.placeHolder}}
+            </button>
+            <ul class="dropdown-menu list-unstyled">
+                <li *ngFor="let item of basicSelect.list" (click)="checked(item.title)" ><i [ngClass]="item.icon"></i>{{item.title}}</li>
+                <!-- <li (click)="checked('In process')"><i class="fa fa-cog"></i>In process</li>
+                <li (click)="checked('Processed')"><i class="fa fa-check"></i>Processed</li> -->
+            </ul>
+        </li>
+    </ul>
+   
+</div>

@@ -1,0 +1,25 @@
+<!-- <p>accounts works!</p> -->
+<section class="container-fluid dashboard root">
+    <app-basic-dashboard [mainHeading]="heading" [subheading]="subheading">
+            <app-basic-select class="dash-basic-select" [basicSelect]="basicSelect" (checkdedValue)="checkdedValue($event)"></app-basic-select>
+    </app-basic-dashboard>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row pb-10">
+                <!-- Search form -->
+                <form class="form-inline md-form form-sm">
+                      <div class="search w-100">
+                            <i class="fa fa-search search-icon" ></i>
+                            <input class="form-control form-control-sm ml-3 search-input"
+                            type="text" placeholder="Search" />
+                        </div>
+                </form>
+                <app-basic-date-range class="account-date-range" [options]="dateRangePickerOptions" (selectedDate)="selectedDateRange($event)">
+                </app-basic-date-range>
+            </div>
+            <div class="accounts-table-section">
+                    <app-basic-table [tableObj]="tableObj" ></app-basic-table>
+                  </div>
+        </div>
+    </div>
+</section>

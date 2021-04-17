@@ -1,0 +1,86 @@
+<section class="table-section">
+    <div class="container-fluid">
+        <div class="row card">
+            <div class="col-md-12 p-0 overflow-auto border-col">
+                <table class="table-section-inner w-100 table-striped mat-elevation-z2">
+                    <thead>
+                        <tr *ngIf="tableObj.tableHeader!=undefined" class="table-heading">
+                            <th colspan="100%" class="th1">
+                                {{tableObj.tableHeader}}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th *ngFor="let col of tableObj.tableCol" class="th-font"
+                                [ngStyle]="{background:tableObj.tableHeaderColor,color:tableObj.tableHeaderFontColor,'text-align':col.textAlign}">
+                                {{col.name}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of tableObj.tableData| paginate: config; let i = index">
+                            <td *ngFor="let col of tableObj.tableCol;" class="position-relative">
+                                <span *ngIf="col.type==undefined" class="data-font">{{data[col.key]}}</span>
+                                <span *ngIf="col.type=='date'"
+                                    class="data-font">{{data[col.key] | date: 'MMM yyyy'}}</span>
+                                <span *ngIf="col.type=='number'"
+                                    class="data-font">{{data[col.key] | number:'1.0':'en-US'}}</span>
+                                <span *ngIf="col.type=='status'" class="payment-status data-font"
+                                    [ngStyle]="{background:data[col.key] == 'In process' ? '#F8D33E':(data[col.key] =='Raise invoice'?'#FF0E2C':'#05D672')}">{{data[col.key+'Title']}}</span>
+                                <span *ngIf="col.type=='link1'" (click)="onClickColoumn(i,data[col.key])" class="link"><i
+                                        [ngClass]="data[col.key] == 'Download' ?'fa fa-download':data[col.key] == 'Create'?'fa fa-plus-circle':'fa fa-edit'"
+                                        [ngStyle]="{ color:col.color}"></i>{{data[col.key]}}</span>
+                                <span *ngIf="col.type=='btnImg'" (click)="onClickColoumn(i,data[col.key])"
+                                    class="link"><button class="btn-img" [disabled]="data[col.key+'Disabled']"><img
+                                            class="link-img" [ngStyle]="{opacity:data[col.key+'Disabled']?'0.1':'1'}"
+                                            [src]="col.linkImg" />{{data[col.key]}}</button></span>
+                                <span *ngIf="col.type=='link'" (click)="onClickColoumn(i,data[col.key])"
+                                    class="link"><button class="btn-img" [disabled]="data[col.key+'Disabled']"><img
+                                            class="link-img" [ngStyle]="{opacity:data[col.key+'Disabled']?'0.1':'1'}"
+                                            [src]="'assets/img/'+data.btnImgDataKey" />{{data[col.key]}}</button></span>
+                                <span *ngIf="col.type=='btnImgDropdown'" (click)="onClickColoumn(i,data[col.key])"
+                                    class="link dropdown" id="btnImgDropdown">
+                                    <ul class="list-unstyled main-ul">
+                                        <li class="mt-0">
+                                            <button class="btn-img dropdown-toggle" data-toggle="dropdown"
+                                                [disabled]="data[col.key+'Disabled']"><img class="link-img"
+                                                    [ngStyle]="{opacity:data[col.key+'Disabled']?'0.1':'1'}"
+                                                    [src]="col.linkImg" />{{data[col.key]}}
+                                            </button>
+                                            <ul class="dropdown-menu list-unstyled">
+                                                <li *ngFor="let opt of col.dropDownOptions" (click)="checkedViewDelete(opt.title)"><i
+                                                        class="fa dropdown-menu-icon"
+                                                        [ngClass]="opt.icon"></i>{{opt.title}}</li>
+                                                <!-- <li><i class="fa fa-trash dropdown-menu-icon"></i>Delete</li> -->
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                </span>
+                                <span *ngIf="col.type=='radialBar'" class="pb-15" id="radialBarChart">
+                                    <apx-chart [series]="data.series" [chart]="chartOptions.chart"
+                                        [plotOptions]="chartOptions.plotOptions" [labels]="chartOptions.labels"
+                                        [fill]="data.fill"></apx-chart>
+                                    <i class="apx-chart-table-count">{{data.confidenceScore}}<i
+                                            class="percentage">%</i></i>
+                                </span>
+
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div *ngIf="tableObj.isPagination" class="row">
+            <div class="col-md-5">
+                <label *ngIf="config" class="pagination-label">{{config.currentPage}} to 4 of
+                    {{config.totalItems}} records</label>
+            </div>
+            <div class="col-md-7 pagination-view">
+                <pagination-controls previousLabel='<' nextLabel='>' maxSize:5 (pageChange)="pageChange($event)"
+                    class="my-pagination"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>

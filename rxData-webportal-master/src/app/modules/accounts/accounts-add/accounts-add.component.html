@@ -1,0 +1,9 @@
+<!-- <p>accounts-add works!</p> -->
+<section class="container-fluid dashboard root">
+    <app-basic-dashboard [mainHeading]="heading" [subheading]="subheading"  (changeValue)="checkdedValue($event)" [basicSelect]="basicSelect"
+    [isDropDown]="isDropDownValue">
+    </app-basic-dashboard>
+    <div class="card">
+            <app-basic-form [formfield]="accountsDetail" [buttons]="accountAddButton" (btnClickEvent)="onSubmitDetail($event)"></app-basic-form>
+    </div>
+</section>

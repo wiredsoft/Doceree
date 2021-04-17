@@ -1,0 +1,21 @@
+<div class="payment-setup-section px-4 mb-3" *ngIf="!showThanksPage">
+    <app-basic-dashboard [mainHeading]="mainHeading" [subheading]="subheading"></app-basic-dashboard>
+    <div class="card payment-card">
+        <mat-tab-group mat-align-tabs="start" [selectedIndex]="selectedIndex" (selectedTabChange)="onTabChanged($event);">
+            <mat-tab label="Account department" > 
+                <app-basic-form [formfield]="accountDepart" [buttons]="accountDepartButton" (btnClickEvent)="onSubmitBankDetail($event)"></app-basic-form>
+            </mat-tab>
+            <mat-tab label="Bank Details" >
+                <app-basic-form [formfield]="bankDetail" [buttons]="bankDetailButton" (btnClickEvent)="onSubmitBankDetail($event)"></app-basic-form>
+            </mat-tab>
+            <mat-tab label="Review and Submit">
+                <basic-list-view [isEdit]=true title="Account Department" [object]="paymentObj.accountDepartment" [fields]="accountDepartList" (onEdit)="goToTab(0)"></basic-list-view>
+                <basic-list-view [isEdit]=true title="Bank Detail" [object]="paymentObj.bankDetail" [fields]="bankDetailList" (onEdit)="goToTab(1)"></basic-list-view>
+                <basic-button text="Submit" (click)="onSubmit()" class="p-3 d-flex flex-row-reverse"></basic-button>
+            </mat-tab>
+        </mat-tab-group>
+      </div>
+</div>
+<div class="thank-you-section px-3 mb-3" *ngIf="showThanksPage">
+    <app-basic-dashboard [mainHeading]="thankYouHeading" [subheading]="thankSubheading"></app-basic-dashboard>
+</div>

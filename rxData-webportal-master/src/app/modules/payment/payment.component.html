@@ -1,0 +1,27 @@
+<section class="payment-section">
+  <app-basic-dashboard [mainHeading]="mainHeading" [subheading]="subheading"></app-basic-dashboard>
+  <div class="row">
+    <div class="col-md-6 pb-15 pr-0">
+      <div class="row no-gutters">
+        <div class="col-lg-6 pr-2" *ngFor="let grid of gridList">
+          <app-basic-count-grid [grid]="grid"></app-basic-count-grid>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="filter-section">
+        <div class="filter-right">
+          <button class="manage-setting-btn mb-2" (click)="mangeSettingEvent()"><img  src="assets/img/settingsBlue.svg"/> Manage Settings</button>
+        </div>
+        <div class="filter-bellow d-flex">
+          <app-basic-select [basicSelect]="basicSelect" (checkdedValue)="checkdedValue($event)"></app-basic-select>
+          <app-basic-date-range [options]="dateRangePickerOptions" (selectedDate)="selectedDateRange($event)">
+          </app-basic-date-range>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="payment-table-section">
+    <app-basic-table [tableObj]="tableObj" (addEditEvent)="addEditEvent($event)"></app-basic-table>
+  </div>
+</section>

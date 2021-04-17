@@ -1,0 +1,110 @@
+<!-- <p>analytics works!</p> -->
+<section class="container-fluid analytics">
+    <app-basic-dashboard [mainHeading]="heading" [subheading]="subheading"></app-basic-dashboard>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row pb-15">
+                <div class="col-md-5">
+
+                    <app-basic-select class="analytics-basic-select" [basicSelect]="basicSelect"
+                        (checkdedValue)="checkdedValue($event)">
+                    </app-basic-select>
+
+                </div>
+                <div class="col-md-7 text-right d-flex justify-content-end">
+
+                    <button class="download-btn mb-0" (click)="downloadFile()"><i class="fa fa-download"></i>
+                        Download</button>
+                    <app-basic-date-range [options]="dateRangePickerOptions" (selectedDate)="selectedDateRange($event)">
+                    </app-basic-date-range>
+                </div>
+            </div>
+            <div class="row grid-row pb-15">
+                <div class="col-md-4 grid-column" *ngFor="let grid of gridList">
+                    <app-basic-count-grid [grid]="grid" [isDashboard]="true"></app-basic-count-grid>
+                </div>
+            </div>
+            <div class="row pb-15">
+                <div class="col-md-12 position-relative" style="text-align: right;">
+
+                    <app-basic-select class="analytics-basic-select last-month" [basicSelect]="basicSelectMap"
+                        (checkdedValue)="checkdedValue($event)">
+                    </app-basic-select>
+
+                    <mat-tab-group class="card">
+                        <mat-tab label="Earnings">
+                            <charts [dataLabel]='chartLabel' [height]="200" [dataSeries]="earningSeries"></charts>
+                        </mat-tab>
+                        <mat-tab label="Data">
+                            <charts [dataLabel]='chartLabel' [height]="200" [dataSeries]="dataSeries"></charts>
+                        </mat-tab>
+                        <mat-tab label="Frequency">
+                            <charts [dataLabel]='chartLabel' [height]="200" [dataSeries]="dataSeries"></charts>
+                        </mat-tab>
+                        <mat-tab label="Consumption">
+                            <charts [dataLabel]='chartLabel' [height]="200" [dataSeries]="earningSeries"></charts>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+            <div class="row pb-15">
+                <div class="col-md-12">
+                    <div class="analytics-table-section">
+                        <app-basic-table [tableObj]="tableObj" (viewDeleteEvent)="viewDeleteEvent($event)"></app-basic-table>
+                        <!-- <div class="">
+                            <div style="background: white; display: flex">
+                                <div class="col-md-4">
+                                    <label *ngIf="page" style="padding-top: 15px;">{{page.pageIndex}} to 4 of
+                                        {{page.pageSize}} records</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
+                                        (page)="pageChange($event)">
+                                    </mat-paginator>
+                                </div>
+                            </div>
+
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 pl-0">
+        <div style="width: 95%">
+            <div class="col-md-12 confidence card">
+                <div class="icon-section-parent">
+                    <p class="performers-heading">Confidence Score</p>
+                </div>
+                <div class="pb-15" id="chart">
+                        <apx-chart
+                          [series]="chartOptions.series"
+                          [chart]="chartOptions.chart"
+                          [plotOptions]="chartOptions.plotOptions"
+                          [labels]="chartOptions.labels"
+                          [colors]="['#006BFF']"
+                        ></apx-chart>
+                      </div>
+                <div class="performers-list " *ngFor="let confidence of confidenceScoreList">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <div class="countsection">
+                            <span class="list-count">{{confidence.count}}</span>
+                            <span *ngIf="confidence.arrowBtn=='up'"
+                                class="list-percentage">{{confidence.percentageCount}}% <i
+                                    class="fa fa-caret-up green"></i></span>
+                            <span *ngIf="confidence.arrowBtn!='up'"
+                                class="list-percentage">{{confidence.percentageCount}}% <i
+                                    class="fa fa-caret-down red"></i></span>
+                        </div>
+                        <!-- <button class="list-btn">{{confidence.btnLabel}}</button> -->
+                    </div>
+                </div>
+                <div class="increase-link">
+                    <a>Increase your Confidence score</a>
+                </div>
+            </div>
+            <radar-chart [radarObj]="mapChart"></radar-chart>
+            <radar-chart [radarObj]="mapActiveAccounts"></radar-chart>
+        </div>
+        </div>
+    </div>
+</section>

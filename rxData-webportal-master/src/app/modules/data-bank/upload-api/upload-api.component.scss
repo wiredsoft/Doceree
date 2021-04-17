@@ -1,0 +1,270 @@
+@import "../../../styles/global.scss";
+
+.upload-api {
+  font-family: "Montserrat-SemiBold";
+  .stepper {
+    background: #f5f5fa;
+  }
+  .label-basic {
+    font-family: "Montserrat-SemiBold";
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.98;
+    letter-spacing: normal;
+    text-align: left;
+    color: #969696;
+    margin-top: 15px;
+    margin-bottom: 3px;
+  }
+  .label-p {
+    font-family: "Montserrat-SemiBold";
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.98;
+    letter-spacing: normal;
+    text-align: left;
+    color: #969696;
+    margin-top: 15px;
+  }
+  .add-pharmacy {
+    display: flex;
+    align-items: flex-end;
+    .add-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      padding: 10px;
+      background: $primary;
+      color: white;
+      border-radius: 50%;
+    }
+    .add-label {
+      display: flex;
+      align-items: center;
+      color: #969696;
+      font-family: "Montserrat-SemiBold";
+      font-size: 15.8px;
+      font-weight: 600;
+      padding: 10px 15px;
+    }
+  }
+  .basic-button {
+    @include button;
+    float: right;
+    padding: 0px 25px;
+  }
+  .btn-copy {
+    background-color: #05d67214;
+    color: #05d672;
+    padding: 10px 10px;
+    border-radius: 7px;
+    border: none;
+    flex: 1;
+    margin-left: 20px !important;
+    margin: 0;
+    min-width: 80px;
+    span {
+      font-family: "Montserrat-SemiBold";
+      padding-left: 7px;
+    }
+  }
+  .upload-section {
+    font-family: "Montserrat-SemiBold";
+    .upload-container {
+      width: 100%;
+      height: 25vh;
+      border-radius: 13.9px;
+      border: solid 1px $primary;
+      border-style: dashed;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 107, 255, 0.1);
+    }
+    .upload-icon {
+      color: $primary;
+      padding-right: 5px;
+    }
+    .add-csv {
+      font-weight: 600;
+      @include primary-color;
+      padding-right: 5px;
+      border: none;
+      background: none;
+      overflow: hidden;
+      position: relative;
+      input[type="file"] {
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+      }
+    }
+    .basic-label {
+      font-weight: 600;
+      color: #969696;
+      padding-top: 3px;
+      font-size: 12px;
+      font-family: "Montserrat-SemiBold";
+    }
+    .template {
+      padding: 1rem 0;
+      color: #969696;
+      font-weight: 600;
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    .uploading-box {
+      padding-left: 20px;
+      margin-bottom: 30px;
+      .uploading-heading {
+        font-size: large;
+        font-weight: 600;
+      }
+      .progress-bar {
+        margin: 0.8rem 0;
+      }
+    }
+    .map-field-table {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .basic-icon {
+      @include basic-icon;
+      width: 32px;
+      height: 32px;
+    }
+    .cancel-icon {
+      @include basic-icon;
+      width: 32px;
+      height: 32px;
+      background-color: #96969694;
+      color: #ff0000;
+      cursor: pointer;
+    }
+  }
+  .review-section {
+    border-radius: 10px;
+    .file-container {
+      padding: 40px 35px 0 35px;
+      .file-name {
+        font-family: "Montserrat-SemiBold";
+        color: $primary;
+        font-weight: bold;
+      }
+    }
+    .basic-sm-icon {
+      @include basic-icon;
+      width: 20px;
+      height: 20px;
+      padding: 2px;
+    }
+    .cancel-sm-icon {
+      @include basic-icon;
+      width: 20px;
+      height: 20px;
+      background-color: #96969694;
+      color: #ff0000;
+      padding: 2px;
+    }
+    .basic-label {
+      font-weight: 600;
+      color: #969696;
+      padding-top: 3px;
+      font-size: 12px;
+      font-family: "Montserrat-SemiBold";
+    }
+  }
+  .input-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    input {
+      padding-right: 40px;
+      color: $primary;
+    }
+    .edit-icon {
+      position: absolute;
+      right: 0;
+      color: #cccccc;
+    }
+  }
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  .para-upload {
+    padding-left: 24px;
+    margin-top: 24px;
+    font-family: "Montserrat-Medium";
+    color: #606060;
+    font-weight: 500;
+  }
+  .note-payment {
+    padding-left: 24px;
+  }
+}
+::ng-deep {
+  .mat-horizontal-content-container {
+    padding: 0 !important;
+  }
+
+  .upload-api {
+    .mat-progress-bar-fill::after {
+      background-color: $primary;
+    }
+    .mat-step-header .mat-step-icon-selected,
+    .mat-step-header .mat-step-icon-state-done,
+    .mat-step-header .mat-step-icon-state-edit {
+      background-color: $primary;
+      color: #fff;
+    }
+    .mat-horizontal-content-container {
+      padding: 0;
+    }
+    .mat-horizontal-stepper-header-container {
+      margin-bottom: 15px;
+      .mat-step-header:first-child {
+        padding-left: 0 !important;
+      }
+    }
+    .mat-step-header.cdk-keyboard-focused,
+    .mat-step-header.cdk-program-focused,
+    .mat-step-header:hover {
+      background-color: transparent;
+    }
+    .mat-step-text-label {
+      font-family: "Montserrat-SemiBold";
+      color: #969696;
+    }
+    .grid-section-dashboard {
+      min-height: 190px;
+    }
+  }
+  .data-detail {
+    padding-bottom: 0.5rem !important;
+    .dataset.d-flex.justify-content-between.pr-2.ng-star-inserted {
+      margin-bottom: 7px;
+      margin-top: 7px;
+    }
+  }
+  
+  .disable-button {
+    background-color: grey !important;
+  }
+}

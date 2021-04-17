@@ -1,0 +1,102 @@
+<!-- <p>account-insights works!</p> -->
+<!-- <p>analytics works!</p> -->
+<section class="container-fluid analytics">
+    <app-basic-dashboard [mainHeading]="heading"></app-basic-dashboard>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row pb-15">
+                <div class="col-md-12 pb-15">
+
+                    <app-basic-select class="analytics-in-basic-select" [basicSelect]="basicSelect"
+                        (checkdedValue)="checkdedValue($event)">
+                    </app-basic-select>
+
+                </div>
+                <div class="col-md-12">
+                    <div class="info-list-section">
+                        <ul class="list-unstyled m-0 d-inline-block">
+                            <li *ngFor="let item of infoList">
+                                <span class="list-key">{{item.key}} :</span>
+                                <span class="list-value"> {{item.value}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row grid-row pb-15">
+                <div class="col-md-4 grid-column" *ngFor="let grid of gridList">
+                    <app-basic-count-grid [grid]="grid" [isDashboard]="true"></app-basic-count-grid>
+                </div>
+            </div>
+            <div class="row pb-15">
+                <div class="col-md-12 position-relative" style="text-align: right;">
+
+                    <app-basic-select class="analytics-in-basic-select last-month" [basicSelect]="basicSelectMap"
+                        (checkdedValue)="checkdedValue($event)">
+                    </app-basic-select>
+
+                    <mat-tab-group class="card">
+                        <mat-tab label="Earnings">
+                            <charts [dataLabel]='chartLabel' [dataSeries]="earningSeries"></charts>
+                        </mat-tab>
+                        <mat-tab label="Data">
+                            <charts [dataLabel]='chartLabel' [dataSeries]="dataSeries"></charts>
+                        </mat-tab>
+                        <mat-tab label="Frequency">
+                            <charts [dataLabel]='chartLabel' [dataSeries]="dataSeries"></charts>
+                        </mat-tab>
+                        <mat-tab label="Consumption">
+                            <charts [dataLabel]='chartLabel' [dataSeries]="dataSeries"></charts>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 pl-0" style="top: 40px;">
+            <div style="width: 95%">
+                <div class="col-md-12 text-right d-flex pl-0 pr-0 pb-15">
+
+                    <button class="download-btn mb-0" (click)="downloadFile()"><i class="fa fa-download"></i>
+                        Download</button>
+                    <app-basic-date-range class="basic-date-range" [options]="dateRangePickerOptions"
+                        (selectedDate)="selectedDateRange($event)">
+                    </app-basic-date-range>
+                </div>
+                <div class="pb-15">
+                    <meter-progress class="account-insight-confidence-detail" [data]="progressMeter"></meter-progress>
+                </div>
+                <div class="col-md-12 confidence card">
+                    <div class="icon-section-parent">
+                        <p class="performers-heading">Hight Revenue fields</p>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-50" id="chart">
+                            <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                                [plotOptions]="chartOptions.plotOptions" [labels]="chartOptions.labels"></apx-chart>
+                        </div>
+                        <div class="performers-outer-section w-50 pl-2">
+                            <div class="performers-list " *ngFor="let confidence of confidenceScoreList">
+                                <div class="d-flex align-items-center">
+                                    <div class="countsection w-100">
+                                        <span class="list-count w-75">{{confidence.heading}}</span>
+                                        <span class="list-percentage w-25">{{confidence.percentageCount}}% <i
+                                                class="green"></i></span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="increase-score mt-3 float-left">
+                                <button class="increase-score">Increase score</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <radar-chart [radarObj]="mapActiveAccounts">
+                    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                        [plotOptions]="chartOptions.plotOptions" [labels]="chartOptions.labels"></apx-chart>
+                </radar-chart>
+            </div>
+        </div>
+    </div>
+</section>

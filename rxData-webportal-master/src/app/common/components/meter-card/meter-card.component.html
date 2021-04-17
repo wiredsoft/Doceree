@@ -1,0 +1,22 @@
+<div class="meter-card card container-fluid">
+    <div class="grid-inner row align-items-center">
+        <div class="icon-section-parent d-flex col-md-5">
+            <div id="chart">
+                <apx-chart *ngIf="cardDetail.dataset!=undefined" [series]="chartOptions.series" [chart]="chartOptions.chart"
+                    [colors]="(cardDetail.colors)? cardDetail.colors: ['#006bff']"
+                    [plotOptions]="chartOptions.plotOptions" [labels]="chartOptions.labels"></apx-chart>
+            </div>
+        </div>
+        <div class="data-detail col-md-7 pt-3 mb-3 pl-0">
+            <div class="header py-2">{{cardDetail.title}}</div>
+            <div *ngFor="let data of cardDetail.dataset" class="dataset d-flex justify-content-between pr-2">
+                <span class="data-heading">{{data.dataHeading}}</span>
+                <span class="data-Count">{{data.dataCount}}
+                    <span *ngIf="data.arrowBtn=='up'" class="list-percentage pl-2"><i class="fa fa-caret-up"></i></span>
+                    <span *ngIf="data.arrowBtn=='down'" class="list-percentage-down pl-2"><i
+                            class="fa fa-caret-down"></i></span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

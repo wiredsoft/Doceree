@@ -1,0 +1,9 @@
+<div class="basic-dialog d-flex flex-column align-items-center" style="width: 800px;">
+    <div *ngIf="data.headingText" class="bold-text text-center">
+        {{ data.headingText }}
+    </div>
+    <div class="text text-center">
+        {{ data.text }}
+    </div>
+    <basic-button [text]="data.buttonLabel" (click)="onSubmit()" class="p-3"></basic-button>
+</div>

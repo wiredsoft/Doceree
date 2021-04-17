@@ -1,0 +1,49 @@
+@import '../../../styles/global.scss';
+.cover-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #05d672;
+    border-radius: 50%;
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    margin-bottom: -20px;
+    z-index: 100;
+  }
+  .cover-container {
+    border: none;
+    border-radius: 23px !important;
+    min-width: 515px;
+    max-width: 515px;
+    height: 219px;
+    padding: 40px 72px 40px 72px;
+    .content {
+      color: #969696;
+      font-size: 14px !important;
+      line-height: 21px;
+      text-align: center;
+      font-weight: 600;
+      font-family: "Montserrat-Regular";
+    }
+    .header {
+      text-align: center;
+      font-weight: 600;
+      font-family: "Montserrat-SemiBold";
+      .title {
+        color: #000000;
+        font-weight: bold;
+      }
+      .sub-title {
+        color: #969696;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+

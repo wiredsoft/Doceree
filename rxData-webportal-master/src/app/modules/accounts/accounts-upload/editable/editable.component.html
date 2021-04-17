@@ -1,0 +1,42 @@
+<section class="editable-table-section">
+    <table class="w-100">
+        <thead>
+            <tr class="header">
+                <th *ngFor="let col of tableObj.tableCol" class="header-th" [ngStyle]="{background:tableObj.tableHeaderColor,color:tableObj.tableHeaderFontColor}">
+                    {{col.name}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of tableObj.tableData; let i = index">
+                <td *ngFor="let col of tableObj.tableCol;">
+                    <div *ngIf="col.type==undefined">
+                        <span class="data-font">{{data[col.key]}}</span>
+                    </div>
+                    <div *ngIf="col.type=='date'">
+                        <span class="data-font">{{data[col.key] | date: 'MMM yyyy'}}</span>
+                    </div>
+                    <div *ngIf="col.type=='number'">
+                        <span class="data-font">{{data[col.key] | number:'1.0':'en-US'}}</span>
+                    </div>
+                    <div *ngIf="col.type=='checkbox'" [ngClass]="col.key == 'skip'? 'cust-skip-lable': ''" class="cust-label">
+                        <label [attr.for]="col.key" class="form-check-label label-basic data-font">{{data[col.key]}}</label>
+                        <input id="{{col.key}}{{i}}" class="mr-3" name="{{col.key}}{{i}}" [type]="col.type" (change)="onCheck($event,col.key)" [checked]="data[col.check]" >
+                        <span class="checkmark"></span>
+                    </div>
+                    <div *ngIf="col.type=='select'">
+                        <select [id]="col.key" class="form-control select">
+                            <option *ngFor="let opt of col.options" [value]="opt.value">{{opt.value}}</option>
+                        </select>
+                    </div>
+                    <div *ngIf="col.type=='tooltip'">
+                        <span class="tooltip-label" *ngFor="let label of data[col.key+'ForCount'];">
+                            <span class="tooltip-text">{{ label }}</span>
+                        </span>
+                        <span class="count">+{{data[col.key+'Count']}}</span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

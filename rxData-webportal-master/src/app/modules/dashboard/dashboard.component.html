@@ -1,0 +1,91 @@
+<section class="container-fluid dashboard">
+    <app-basic-dashboard [mainHeading]="heading"></app-basic-dashboard>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-5">
+                </div>
+                <div class="col-md-7 text-right d-flex justify-content-end">
+
+                    <button class="download-btn" (click)="downloadFile()"><img src="assets/img/DownloadBlue.svg" />
+                        Download</button>
+                    <app-basic-date-range [options]="dateRangePickerOptions" (selectedDate)="selectedDateRange($event)">
+                    </app-basic-date-range>
+                </div>
+            </div>
+            <div class="row pb-15">
+                <div class="col-md-4 pr-0" *ngFor="let grid of gridList">
+                    <app-basic-count-grid [grid]="grid" [isDashboard]="true"></app-basic-count-grid>
+                </div>
+                <div class="col-md-4">
+                    <meter-progress [data]="progressMeter"></meter-progress>
+                </div>
+            </div>
+            <div class="row pb-15">
+                <div class="col-md-12 position-relative" style="text-align: right;">
+
+                    <!-- <select name="monthSelect" class="last-month">
+                        <option selected="selected" value="one">Last Month</option>
+                        <option value="two">Current Month</option>
+                        <option value="three">This Year</option>
+                    </select> -->
+                    <app-basic-select class="dash-basic-select last-month" [basicSelect]="basicSelectMap"
+                    (checkdedValue)="checkdedValue($event)">
+                </app-basic-select>
+
+                    <mat-tab-group class="card">
+                        <mat-tab label="Earnings">
+                            <charts [dataLabel]='chartLabel' [dataSeries]="dataSeries"></charts>
+                        </mat-tab>
+                        <mat-tab label="Data">
+                            <charts [dataLabel]='chartLabel' [dataSeries]="dataSeries1"></charts>
+                        </mat-tab>
+                        <mat-tab label="Frequency">
+                            <charts [dataLabel]='chartLabel' [dataSeries]="dataSeries"></charts>
+                        </mat-tab>
+                        <mat-tab label="Consumption">
+                            <charts [dataLabel]='chartLabel' [dataSeries]="dataSeries1"></charts>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="payment-table-section">
+                        <app-basic-table [tableObj]="tableObj" (viewDeleteEvent)="viewDeleteEvent($event)"></app-basic-table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 pl-0">
+            <div style="width: 95%">
+                <div class="col-md-12 performers">
+                    <div class="icon-section-parent">
+                        <span class="performers-star"><i class="fa fa-star"></i><i class="fa fa-star fa-lg" style="padding-right: 4px;padding-left: 4px;font-size: 1.83333333em;"></i><i
+                                class="fa fa-star"></i></span>
+                        <p class="performers-heading">Top performers</p>
+                    </div>
+
+                    <div class="performers-list " *ngFor="let performer of performersList">
+                        <p class="list-heading">{{performer.heading}}</p>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="countsection">
+                                <span class="list-count">{{performer.count}}</span>
+                                <span *ngIf="performer.arrowBtn=='up'" class="list-percentage"><i
+                                        class="fa fa-caret-up"></i>{{performer.percentageCount}}%</span>
+                                <span *ngIf="performer.arrowBtn!='up'" class="list-percentage-down"><i
+                                        class="fa fa-caret-down"></i>{{performer.percentageCount}}%</span>
+                            </div>
+                            <button class="list-btn">{{performer.btnLabel}}</button>
+                        </div>
+                    </div>
+
+                </div>
+            
+            <radar-chart [radarObj]="radarChart"></radar-chart>
+            <radar-chart [radarObj]="mapChart"></radar-chart>
+            </div>
+        </div>
+    </div>
+</section>

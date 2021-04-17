@@ -1,0 +1,152 @@
+@import "../../../styles/global.scss";
+
+.account-upload-section {
+  font-family: "Montserrat-SemiBold";
+  .stepper {
+    background: #f5f5fa;
+    max-width: 90%;
+  }
+  .upload-section {
+    font-family: "Montserrat-SemiBold";
+    .upload-container {
+      width: 100%;
+      height: 25vh;
+      border-radius: 13.9px;
+      border: solid 1px $primary;
+      border-style: dashed;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 107, 255, 0.1);
+    }
+    .upload-icon {
+      color: $primary;
+      padding-right: 5px;
+    }
+    .add-csv {
+      font-weight: 600;
+      @include primary-color;
+      padding-right: 5px;
+      border: none;
+      background: none;
+      overflow: hidden;
+      position: relative;
+      input[type="file"] {
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+      }
+    }
+    .basic-label {
+      font-weight: 600;
+      color: #969696;
+      padding-top: 3px;
+      font-size: 12px;
+      font-family: "Montserrat-SemiBold";
+    }
+    .template {
+      padding: 1rem 0;
+      color: #969696;
+      font-weight: 600;
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    .uploading-box {
+      padding-left: 20px;
+      margin-bottom: 30px;
+      .uploading-heading {
+        font-size: large;
+        font-weight: 600;
+      }
+      .progress-bar {
+        margin: 0.8rem 0;
+      }
+    }
+    .map-field-table {
+      width: 100%;
+      border-radius: 10px;
+    }
+  }
+  .review-section {
+    border-radius: 10px;
+  }
+  .basic-button {
+    @include button;
+    float: right;
+    padding: 0px 25px;
+  }
+  .basic-icon {
+    @include basic-icon;
+    width: 32px;
+    height: 32px;
+  }
+  .cancel-icon {
+    @include basic-icon;
+    width: 32px;
+    height: 32px;
+    background-color: #96969694;
+    color: #ff0000;
+    cursor: pointer;
+  }
+  .basic-sm-icon {
+    @include basic-icon;
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+  }
+  .cancel-sm-icon {
+    @include basic-icon;
+    width: 20px;
+    height: 20px;
+    background-color: #96969694;
+    color: #ff0000;
+    padding: 2px;
+  }
+}
+.file-container {
+  padding: 40px 35px 0 35px;
+  .file-name {
+    font-family: "Montserrat-SemiBold";
+    color: $primary;
+    font-weight: bold;
+  }
+}
+.add-csv:hover {
+  cursor: pointer;
+}
+::ng-deep {
+  .account-upload-section {
+    .mat-progress-bar-fill::after {
+      background-color: $primary;
+    }
+    .mat-step-header .mat-step-icon-selected,
+    .mat-step-header .mat-step-icon-state-done,
+    .mat-step-header .mat-step-icon-state-edit {
+      background-color: $primary;
+      color: #fff;
+    }
+    .mat-horizontal-content-container {
+      padding: 0;
+    }
+    .mat-horizontal-stepper-header-container {
+      margin-bottom: 15px;
+      .mat-step-header:first-child {
+        padding-left: 0 !important;
+      }
+    }
+    .mat-step-header.cdk-keyboard-focused,
+    .mat-step-header.cdk-program-focused,
+    .mat-step-header:hover {
+      background-color: transparent;
+    }
+    .mat-step-text-label {
+      font-family: "Montserrat-SemiBold";
+      color: #969696;
+    }
+  }
+}
+a {
+  text-decoration: none;
+}

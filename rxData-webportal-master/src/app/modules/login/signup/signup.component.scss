@@ -1,0 +1,77 @@
+@import '../../../styles/global.scss';
+.signup-section {
+  .signup-content {
+    width: 60%;
+    background: #f5f6f7;
+  }
+
+  .signup-cover {
+    width: 40%;
+    background: url("../../../../assets/signup-cover.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    .corousel-container {
+      width: 100%;
+    }
+  }
+
+  .logo {
+    width: 180px;
+    margin: 10px 0 10px 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+  }
+
+  .signup-form {
+    max-width: 400px;
+    height: 100%;
+    margin: 0 auto;
+    .heading {
+      color: #333333;
+      font-size: x-large;
+      line-height: 1.66;
+      @include font-weight-bold;
+    }
+    .login {
+      color: #969696;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+    .link {
+      color: #006bff;
+    }
+    .label-basic {
+      font-weight: 600;
+      color: #969696;
+    }
+    .check-label {
+      font-size: small;
+    }
+  }
+}
+
+.corousel-box {
+  width: 80%;
+  margin: 10%;
+}
+.form-control {
+    border-radius: 7px !important;
+    background-color: transparent !important;
+}
+
+
+@media (max-width:1200px) {
+    .signup-content {
+        width: 100% !important;
+    }
+    .signup-cover {
+        width: 100% !important; 
+    }
+    .logo {
+        position: relative !important;
+    }
+}

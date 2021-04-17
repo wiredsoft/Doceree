@@ -1,0 +1,32 @@
+@import 'variable.scss';
+
+@mixin primary-color {
+    color: $primary;
+}
+
+@mixin basic-icon {
+    @include flex-center;
+    background-color: $primary;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin button {
+    font-family: 'Montserrat-SemiBold';
+    border-radius: 2rem;
+    background-color: #05d672;
+    color: white;
+    padding: 0.4rem 1rem;
+}
+@mixin  font-weight-bold {
+    font-family: 'Montserrat-Bold';
+    font-weight: 600;
+}

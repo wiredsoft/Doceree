@@ -1,0 +1,50 @@
+<div class="wrapper container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <!-- sidebar-->
+            <app-sidebar class="aside-container" #sideBar></app-sidebar>
+        </div>
+        <div class="col-md-10 pl-0 content-section">
+            <!-- top navbar-->
+            <app-header class="topnavbar-wrapper"></app-header>
+            <!-- Main section-->
+            <section class="section-container">
+                <!-- Page content-->
+                <div class="continer-fluid">
+                    <router-outlet></router-outlet>
+
+                    <div class="chat-popup" id="myForm" *ngIf="loginService?.chatShow">
+                        <div class="row chat-top-heading">
+                            <div class="col-sm-2 top-chat-menu">. . .</div>
+                            <div class="col-sm-7 chat-heading">
+                                <h1 class="top-margin">Support Desk</h1>
+                            </div>
+                            <div class="col-sm-3 button-align top-margin">
+                                <button type="button" class="btn heading-color"
+                                    (click)="closeChat()">X</button>
+                            </div>
+                        </div>
+                        <h2 class="message-heading">Frequently asked question!</h2>
+                        <div class="chat-message" id="style-4">
+                            <p *ngFor="let message of messageList" class="text-message">{{message}}</p>
+                        </div>
+                        <button type="button" class="btn raise-new-ticket"
+                            (click)="closeChat()">Raise a new ticket!</button>
+                    </div>
+                    <button *ngIf="loginService?.chatShow"
+                        (click)="showChat()"
+                        color="" class="floating"> <img
+                            class="input-icon"
+                            src="assets/img/chat.png" width="77px"
+                            height="77px"></button>
+                </div>
+            </section>
+            <!-- Page footer-->
+
+            <!-- <footer class="footer-container" app-footer></footer> -->
+        </div>
+    </div>
+
+
+
+</div>

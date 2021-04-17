@@ -1,0 +1,79 @@
+<!-- <p>login works!</p> -->
+<!-- <section class="section-login">
+
+        <div class="container-fluid">
+                <div class="row">
+                        <div class="col-md-12">
+                                <div class="main-login text-center mt-4">
+                                        <div class="main-login-inner">
+
+
+                                                <p class="user-block-name">
+                                                        Welcome </p>
+                                                <button class="login-btn" id="btn" (click)="login()">Login</button>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+
+        </div>
+</section> -->
+<section class="section-login container-fluid">
+                <div class="row">
+                    <div class="signup-content">
+                        <img class="logo" src="assets/logo.svg" alt="logo">
+                        <div class="signup-form d-flex flex-column justify-content-center" [formGroup]="form">
+                            <div class="heading">Login</div>
+                            <div class="login">
+                                <span>Don’t have account? </span>
+                                <a class="link" routerLink="/signup">Signup</a>
+                            </div>
+                            <div class="form-group py-1">
+                                <label attr.for="email" class="label-basic" >Email Id</label>
+                                <input formControlName="email" id="email" type="text" class="form-control">
+                            </div>
+                            <div class="form-group py-1">
+                                <label attr.for="password" class="label-basic" >Password</label>
+                                <input formControlName="password" id="password" type="password" class="form-control">
+                            </div>
+                           
+                            <div class="form-check py-2">
+                                <!-- <input formControlName="agreeTerms" id="agreeTerms" type="checkbox" 
+                                    class="form-check-input" (change)="onCheck($event)"> -->
+                                <label attr.for="agreeTerms" class="form-check-label label-basic check-label">
+                                                Forgot your <a class="link">password?</a>.
+                                </label>
+                            </div>
+                            <basic-button class="py-2 mt-2" text="Login" (click)="login()"></basic-button>
+                        </div>
+                    </div>
+                    <div class="signup-cover d-flex align-items-end">
+                        <div class="corousel-container">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <!-- <ol class="carousel-indicators">    
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                </ol> -->
+                                <div class="carousel-inner">
+                                  <div class="carousel-item active">
+                                    <div class="corousel-box">
+                                      <basic-cover-card></basic-cover-card>
+                                    </div>
+                                  </div>
+                                  <!-- <div class="carousel-item">
+                                    <div class="corousel-box">
+                                      <basic-cover-card></basic-cover-card>
+                                    </div>
+                                  </div>
+                                  <div class="carousel-item">
+                                    <div class="corousel-box">
+                                      <basic-cover-card></basic-cover-card>
+                                    </div>
+                                  </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>

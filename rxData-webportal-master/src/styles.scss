@@ -1,0 +1,172 @@
+/* You can add global styles to this file, and also import other style files */
+//@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "./app/styles/global.scss";
+@font-face {
+  font-family: "Montserrat-Black";
+  src: url(./assets/fonts/Montserrat-Black.ttf);
+}
+@font-face {
+  font-family: "Montserrat-BlackItalic";
+  src: url(./assets/fonts/Montserrat-BlackItalic.ttf);
+}
+@font-face {
+  font-family: "Montserrat-Bold";
+  src: url(./assets/fonts/Montserrat-Bold.ttf);
+}
+@font-face {
+  font-family: "Montserrat-BoldItalic";
+  src: url(./assets/fonts/Montserrat-BoldItalic.ttf);
+}
+@font-face {
+  font-family: "Montserrat-ExtraBold";
+  src: url(./assets/fonts/Montserrat-ExtraBold.ttf);
+}
+@font-face {
+  font-family: "Montserrat-ExtraBoldItalic";
+  src: url(./assets/fonts/Montserrat-ExtraBoldItalic.ttf);
+}
+@font-face {
+  font-family: "Montserrat-ExtraLight";
+  src: url(./assets/fonts/Montserrat-ExtraLight.ttf);
+}
+@font-face {
+  font-family: "Montserrat-ExtraLightItalic";
+  src: url(./assets/fonts/Montserrat-ExtraLightItalic.ttf);
+}
+@font-face {
+  font-family: "Montserrat-Italic";
+  src: url(./assets/fonts/Montserrat-Italic.ttf);
+}
+@font-face {
+  font-family: "Montserrat-Light";
+  src: url(./assets/fonts/Montserrat-Light.ttf);
+}
+@font-face {
+  font-family: "Montserrat-LightItalic";
+  src: url(./assets/fonts/Montserrat-LightItalic.ttf);
+}
+@font-face {
+  font-family: "Montserrat-Medium";
+  src: url(./assets/fonts/Montserrat-Medium.ttf);
+}
+@font-face {
+  font-family: "Montserrat-MediumItalic";
+  src: url(./assets/fonts/Montserrat-MediumItalic.ttf);
+}
+@font-face {
+  font-family: "Montserrat-Regular";
+  src: url(./assets/fonts/Montserrat-Regular.ttf);
+}
+@font-face {
+  font-family: "Montserrat-SemiBold";
+  src: url(./assets/fonts/Montserrat-SemiBold.ttf);
+}
+@font-face {
+  font-family: "Montserrat-SemiBoldItalic";
+  src: url(./assets/fonts/Montserrat-SemiBoldItalic.ttf);
+}
+@font-face {
+  font-family: "Montserrat-Thin";
+  src: url(./assets/fonts/Montserrat-Thin.ttf);
+}
+@font-face {
+  font-family: "Montserrat-ThinItalic";
+  src: url(./assets/fonts/Montserrat-ThinItalic.ttf);
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Montserrat-Regular" !important;
+  letter-spacing: 0.5px;
+  overflow-x: hidden;
+}
+
+.cdk-global-scrollblock {
+  overflow-y: hidden !important;
+}
+
+.family-mospace {
+  font-family: "Montserrat", monospace !important;
+}
+
+.primary-color {
+  color: $primary;
+}
+.text-color {
+  color: #969696;
+}
+p,
+select,
+option {
+  color: #969696;
+}
+*:focus {
+  outline: none;
+}
+section.root {
+  padding: 0 30px !important;
+}
+.align-items-flex-end {
+  align-items: flex-end;
+}
+.card {
+  border-radius: 9px !important;
+}
+// carosel css
+.carousel-indicators li {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  margin-right: 8px !important;
+  margin-left: 8px !important;
+  cursor: pointer;
+  background-color: #fff;
+  opacity: 0.5;
+  transition: opacity 0.6s ease;
+}
+
+.carousel-indicators .active {
+  opacity: 1;
+  background-color: $primary !important;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: $secondary !important;
+}
+
+.pb-15 {
+  padding-bottom: 15px;
+}
+.pb-10 {
+  padding-bottom: 10px;
+}
+.form-control {
+  font-family: "Montserrat-SemiBold";
+  color: #606060 !important;
+  border-radius: 7px !important;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: $primary;
+}
+.mat-step-header.cdk-keyboard-focused,
+.mat-step-header.cdk-program-focused,
+.mat-step-header:hover {
+  background-color: transparent;
+}
+.mat-horizontal-stepper-header-container {
+  margin-bottom: 15px;
+  .mat-step-header:first-child {
+    padding-left: 0 !important;
+  }
+}
+.mat-stepper-horizontal-line {
+  max-width: 100px !important;
+}

@@ -1,0 +1,16 @@
+<section class="payment-section">
+  <app-basic-dashboard [mainHeading]="mainHeading" [subheading]="subheading"></app-basic-dashboard>
+  <div class="card mt-2">
+    <mat-tab-group mat-align-tabs="start">
+      <mat-tab label="Bank detail">
+        <app-basic-form [formfield]="bankDetail" [buttons]="bankDetailButton" (btnClickEvent)="onSubmitDetail($event)"></app-basic-form>
+       </mat-tab>
+      <mat-tab label="Billing information">
+          <app-basic-form [formfield]="billingInfo" [buttons]="billingInfoButton" (btnClickEvent)="onSubmitDetail($event)"></app-basic-form>
+      </mat-tab>
+      <mat-tab label="Account department">
+          <app-basic-form [formfield]="accountDepart" [buttons]="accountDepartButton" (btnClickEvent)="onSubmitDetail($event)"></app-basic-form>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</section>

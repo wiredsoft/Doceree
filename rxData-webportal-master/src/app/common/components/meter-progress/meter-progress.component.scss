@@ -1,0 +1,70 @@
+.meter-progress {
+  .meter-progress-card {
+    border-radius: 8px;
+    padding: 0 15px;
+    .heading {
+      margin: 0;
+      position: absolute;
+      left: 30px;
+      top: 7px;
+
+      font-family: 'Montserrat-SemiBold';
+      font-size: 14px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.26;
+      letter-spacing: normal;
+      text-align: left;
+      color: #969696;
+    }
+  }
+}
+.red {
+  color: #ff0e2c;
+}
+.green {
+  color: #05d672;
+}
+
+svg {
+  max-height: 100px !important;
+}
+.custom-count {
+  transform: translateX(-50%);
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  font-size: 27px;
+  color: #006bff;
+  font-weight: 600;
+  i {
+    font-style: normal;
+    font-size: 22px;
+  }
+}
+.count-header {
+  padding: 0.6rem 1rem 0 1rem;
+  .data-heading {
+    font-family: 'Montserrat-SemiBold';
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.26;
+    letter-spacing: normal;
+    text-align: left;
+    color: #969696;
+  }
+  .update-sign {
+    .update-count {
+      font-family: 'Montserrat-SemiBold';
+      font-size: 11px;
+      letter-spacing: normal;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 0.98;
+    }
+  }
+}

@@ -1,0 +1,66 @@
+<div class="grid-section card container-fluid"
+    *ngIf="(!isDashboard || isDashboard == undefined) && multipleData==undefined">
+    <div class="grid-inner row">
+        <div class="icon-section-parent d-flex col-sm-4">
+            <span *ngIf="grid.imgIcon==undefined" class="icon-section-span"><i
+                    class="fa fa-database icon-section mat-elevation-z2" [ngClass]="grid.icon"></i></span>
+            <span *ngIf="grid.imgIcon!==undefined" class="icon-F-span"> <img class="icon-section mat-elevation-z2"
+                    [src]="grid.imgIcon" /></span>
+        </div>
+        <div class="data-detail col-sm-8">
+            <div *ngIf="grid.upDown==undefined ||grid.upDown=='down'" class="update-sign d-flex flex-row-reverse">
+                <i class="fa fa-caret-down"><span class="pl-1 update-count">{{grid.updateCount}}</span></i>
+            </div>
+            <div *ngIf="grid.upDown=='up'" class="up-update-sign d-flex flex-row-reverse">
+                <i class="fa fa-caret-up"><span class="pl-1 update-count">{{grid.updateCount}}</span></i>
+            </div>
+            <div class="data-heading">{{grid.dataHeading}}</div>
+            <div class="data-count">{{grid.dataCount}}</div>
+        </div>
+    </div>
+</div>
+
+<div class="grid-section-dashboard card" *ngIf="isDashboard">
+    <div class="grid-inner container-fluid">
+        <div class="row count-header d-flex justify-content-between">
+            <div class="data-heading">{{grid.dataHeading}}</div>
+            <div *ngIf="grid.upDown==undefined ||grid.upDown=='down'" class="update-sign d-flex">
+                <i class="fa fa-caret-down"><span class="pl-1 update-count">{{grid.updateCount}}</span></i>
+            </div>
+            <div *ngIf="grid.upDown=='up'" class="up-update-sign d-flex">
+                <i class="fa fa-caret-up"><span class="pl-1 update-count">{{grid.updateCount}}</span></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="icon-section-parent col-sm-4">
+                <span *ngIf="grid.imgIcon==undefined" class="icon-section-span"><i
+                        class="fa icon-section mat-elevation-z2" [ngClass]="grid.icon"></i></span>
+
+                <span *ngIf="grid.imgIcon!==undefined" class="icon-section-span">
+                    <span class="img-parent mat-elevation-z2"> <img [src]="grid.imgIcon" /></span>
+                </span>
+
+            </div>
+            <div class="data-detail col-sm-8">
+                <div class="data-count">{{grid.dataCount}}</div>
+                <div class="data-subheading">{{grid.dataSubHeading}}</div>
+                <div class="data-dataSubCount">{{grid.dataSubCount}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="grid-section-dashboard card container-fluid" *ngIf="multipleData">
+    <div class="grid-inner row">
+        <div class="icon-section-parent d-flex pt-2 col-sm-4">
+            <span class="icon-section-span multiple-data-span"><i class="fa fa-database icon-section mat-elevation-z2"
+                    [ngClass]="grid.icon"></i></span>
+        </div>
+        <div class="data-detail col-sm-8 pt-2">
+            <div *ngFor="let data of grid.dataset" class="dataset">
+                <div class="data-heading">{{data.dataHeading}}</div>
+                <div class="data-Count">{{data.dataCount}}</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+@import "../../../styles/global.scss";
+.sidebar-section {
+  text-align: center;
+  .logo {
+    max-width: 80%;
+    margin-top: 10px;
+    margin-bottom: 70px;
+    padding: 15px;
+  }
+  .menu-ul {
+    text-align: left;
+    margin-bottom: 100px;
+    li {
+      padding: 10px 10px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #969696;
+      cursor: pointer;
+      width: 75%;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      font-family: 'Montserrat-SemiBold';
+      img {
+        height: 24px;
+        width: 24px;
+        // margin-right: 10px;
+        margin-left: 10px;
+        padding: 3px;
+      }
+      &.active {
+        background: $secondary;
+        color: #fff;
+      }
+    }
+  }
+  .btn-upload {
+    background: #05d672;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    min-width: 200px;
+    font-size: 18px;
+    font-family: "Montserrat-SemiBold";
+    i {
+      font-size: 16px;
+      margin-right: 10px;
+    }
+  }
+  #loadSideBarForProfile{
+    display: none;
+  }
+  #loadSideBarForPayment{
+    display: none;
+  }
+  #loadSideBarForDataBank{
+    display: none;
+  }
+  #loadSideBarForAccount{
+    display: none;
+  }
+}
+
+.hoverActive {
+  display: none;
+}
+.hover-li.active {
+  .hoverDeactive {
+    display: none !important;
+  }
+  .hoverActive {
+    display: inline-block !important;
+  }
+  
+}
+.img-big{
+  width: 28px !important;
+  height: 28px !important;
+}

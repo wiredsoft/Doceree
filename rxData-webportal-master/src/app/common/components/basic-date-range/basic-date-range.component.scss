@@ -1,0 +1,48 @@
+.filter-fields {
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+    // width: 190px;
+    background: #fff;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+    &.sort {
+      width: 180px;
+    }
+    &.calender {
+      max-height: 35px;
+      // min-width: 280px;
+    }
+    img {
+      font-size: 20px;
+      color: #cccccc;
+      padding: 6px 15px 7px 0;
+      margin-right: 10px;
+      border-right: 1px solid;
+    }
+    select {
+      border: none;
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+      min-width: 80px;
+      color: #cccccc;
+      &:focus {
+        outline: none !important;
+      }
+    }
+  }
+  .daterange-input:focus{
+    outline: none !important;
+  }
+  .daterange-input::placeholder {
+    color: #969696;
+    font-weight: 600;
+  }
+  .daterange-input {
+    font-family: 'Montserrat-SemiBold';
+    color: #969696;
+    font-weight: 600;
+  }
+  

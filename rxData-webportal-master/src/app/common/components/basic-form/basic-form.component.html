@@ -1,0 +1,42 @@
+<div [formGroup]="form">
+    <div class="row py-2 px-4">
+        <div *ngFor="let field of formfield" [ngClass]="field.class">
+            <div *ngIf="field.controlType == 'heading'" class=" py-3">
+                <label class="heading mb-0">{{field.label}}</label>
+            </div>
+            <div *ngIf="field.controlType == 'label'">
+                <label class="label-only-basic mb-0" [ngStyle]="{color:field.color}">{{field.label}}</label>
+            </div>
+            <div *ngIf="field.controlType == 'input'" class="form-group">
+                <label [attr.for]="field.key" class="label-basic" >{{field.label}}</label>
+                <input [formControlName]="field.key" [id]="field.key" [type]="field.type" class="form-control">
+                <div *ngIf="form.controls[field.key].invalid && (form.controls[field.key].dirty || form.controls[field.key].touched)" class="alert alert-danger">
+                    <div *ngIf="form.controls[field.key].errors?.required">
+                        {{field.label}} is required.
+                  </div>
+                </div>
+            </div>
+            <div *ngIf="field.controlType == 'select'" class="form-group">
+                <label [attr.for]="field.key" class="label-basic">{{field.label}}</label>
+                <select [id]="field.key" [formControlName]="field.key" class="form-control">
+                    <option *ngFor="let opt of field.options" [value]="opt.value">{{opt.value}}</option>
+                </select>
+                <div *ngIf="form.controls[field.key].invalid && (form.controls[field.key].dirty || form.controls[field.key].touched)" class="alert alert-danger">
+                    <div *ngIf="form.controls[field.key].errors?.required">
+                        {{field.label}} is required.
+                  </div>
+                </div>
+            </div>
+            <div *ngIf="field.controlType == 'checkbox'" class="form-check py-3">
+                <input [formControlName]="field.key" [id]="field.key" [type]="field.controlType" 
+                    class="form-check-input" (change)="onCheck($event,field.key)">
+                <label [attr.for]="field.key" class="form-check-label label-basic">{{field.label}}</label>
+            </div>
+        </div>
+        <div *ngIf="buttons.length > 0" class="col-sm-12 py-3">
+            <div *ngFor="let button of buttons" class="d-flex flex-row-reverse">
+                <basic-button [text]="button.label" (click)="onBtnClick(button.id)"></basic-button>
+            </div>
+        </div>
+    </div>
+</div>

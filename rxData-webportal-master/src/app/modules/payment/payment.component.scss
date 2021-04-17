@@ -1,0 +1,77 @@
+@import "../../styles/variable.scss";
+.payment-section {
+  padding: 10px 30px;
+  background: #f5f5fa;
+  .filter-section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-bottom: 15px;
+    .filter-right {
+      float: right;
+      border: none;
+      width: 100%;
+      text-align: right;
+      .manage-setting-btn {
+        border: none;
+        padding: 8px 20px;
+        border-radius: 8px;
+        color: #006bff;
+        background-color: #006bff21;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+      }
+    }
+  }
+  .filter-bellow {
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+::ng-deep {
+  .mat-form-field {
+    background: transparent !important;
+    max-height: 45px !important;
+    font-size: 10px;
+  }
+  .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+  }
+  .mat-form-field-underline {
+    display: none;
+  }
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: transparent;
+  }
+  .mat-tab-body-content {
+    height: 100%;
+    overflow-x: hidden !important;
+  }
+}
+select option {
+  font-weight: 900;
+  font-size: 15px;
+  font-family: 'FontAwesome', 'Second Font name' !important;
+}
+::ng-deep{
+  app-basic-form {
+    .form-control {
+      font-weight: 600 !important;
+      font-family: 'Montserrat-SemiBold' !important;
+    }
+  }
+  .mat-tab-label-active {
+    
+    color: $secondary !important;
+  }
+  .mat-tab-label{
+    font-family: 'Montserrat-SemiBold';
+    font-size: 16px;
+    font-weight: 600;
+  }
+}

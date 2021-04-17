@@ -1,0 +1,6 @@
+<div class="filter-fields calender">
+    <img class="ml-3" style="margin-left: 15px;" src="assets/img/CalanderGray.svg"/>
+    <input type="text" class="border-0 daterange-input" name="daterangeInput" placeholder="Date Range" id="dateRangepicker"
+        (selected)="selectedDateRange($event, daterange)" daterangepicker [options]="options" (blur)="blurDateRange($event)"autocomplete="off"/>
+    <i class="fa fa-caret-down border-0 m-0 pr-3"></i>
+</div>

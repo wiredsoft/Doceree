@@ -1,0 +1,57 @@
+@import "../../styles/global.scss";
+.profile-section {
+  background: #f5f5fa;
+  padding: 10px 30px;
+  .stepper {
+    background: #f5f5fa;
+  }
+  .video-section {
+    width: 100%;
+    .video {
+      max-height: 350px;
+    }
+  }
+}
+::ng-deep {
+  .profile-section {
+    .mat-step-text-label {
+      font-family: "Montserrat-SemiBold";
+      color: #969696;
+    }
+    .mat-step-header .mat-step-icon-selected,
+    .mat-step-header .mat-step-icon-state-done,
+    .mat-step-header .mat-step-icon-state-edit {
+      background-color: $primary;
+    }
+    .mat-step-header.cdk-keyboard-focused,
+    .mat-step-header.cdk-program-focused,
+    .mat-step-header:hover {
+      background-color: transparent;
+    }
+    .mat-horizontal-stepper-header-container {
+      margin-bottom: 15px;
+      .mat-step-header:first-child {
+        padding-left: 0 !important;
+      }
+    }
+    .mat-horizontal-content-container {
+      overflow: hidden;
+      padding: 0 0 24px 0;
+    }
+  }
+}
+.complete-profile-btn {
+  font-family: "Montserrat-SemiBold";
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.98;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.iframe-video {
+  width: 100%;
+  height: 350px;
+}
